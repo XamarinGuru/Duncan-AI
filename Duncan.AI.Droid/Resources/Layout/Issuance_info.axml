@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="@drawable/login_background">
+  <RelativeLayout
+      android:id="@+id/IssuanceInfoLayout"
+      android:layout_width="fill_parent"
+      android:layout_height="wrap_content"
+      android:layout_centerInParent="true">
+      <ImageView
+      android:src="@drawable/logo_duncan"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:id="@+id/imageView1"
+      android:layout_centerHorizontal="true" />
+      <TextView
+          android:text="@string/City"
+          android:textAppearance="?android:attr/textAppearanceLarge"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:id="@+id/textViewCity"
+          android:layout_centerHorizontal="true"
+          android:gravity="center"
+          android:layout_below="@id/imageView1"
+          android:layout_marginTop="20dp" />
+    <LinearLayout
+            android:orientation="vertical"
+            android:layout_gravity="center"
+            android:layout_marginTop="40dp"
+            android:layout_width="300dp"
+            android:layout_height="200dp"
+            android:background="@android:color/white"
+            android:layout_below="@id/textViewCity"
+            android:layout_centerInParent="true"
+            android:id="@+id/iiDetailsLinearLayout" />
+
+    <Button
+        android:id="@+id/refIssuanceInfoBackButton"
+        android:layout_width="fill_parent"
+        android:layout_height="60dp"
+        android:layout_below="@+id/iiDetailsLinearLayout"
+        android:layout_marginTop="40dp"
+        android:text="@string/BackButton"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:background="@drawable/button"
+        android:textColor="@android:color/white" />  
+  </RelativeLayout>
+</RelativeLayout>

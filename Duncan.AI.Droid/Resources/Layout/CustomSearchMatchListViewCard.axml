@@ -1,0 +1,200 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/relativeLayout1"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:padding="5dp"
+    android:background="@color/civicsmart_gray_light">
+    <LinearLayout
+        android:id="@+id/card_band"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_marginTop="5dp"
+        android:visibility="visible"
+        android:background="@drawable/cardviewborder_green">
+        <LinearLayout
+            android:id="@+id/card_band_header"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_marginTop="5dp"
+            android:visibility="visible"
+            android:color="@color/cardview_green"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:background="@color/cardview_green">
+            <TextView
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:gravity="center"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:text="Space MI-717  Plate FL ABC123"
+                android:id="@+id/card_band_header_text1"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:textColor="@color/civicsmart_black"
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="5dp" />
+            <TextView
+                android:textAppearance="?android:attr/textAppearanceSmall"
+                android:gravity="center_horizontal"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:text="123 Main Street"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:id="@+id/card_band_header_text2"
+                android:textColor="@color/black"
+                android:singleLine="true"
+                android:ellipsize="end"
+                android:layout_marginBottom="5dp" />
+        </LinearLayout>
+        <RelativeLayout
+            android:id="@+id/card_band_clock1_layout"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginTop="5dp"
+            android:visibility="visible"
+            android:gravity="center">
+            <LinearLayout
+                android:id="@+id/card_band_clock"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:visibility="visible"
+                android:layout_alignParentLeft="true"
+                android:gravity="center">
+                <TextView
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:layout_height="wrap_content"
+                    android:text="Expired Since"
+                    android:gravity="center"
+                    android:layout_width="wrap_content"
+                    android:id="@+id/card_band_clock1_label"
+                    android:textColor="@color/civicsmart_black" />
+                <TextView
+                    android:textAppearance="?android:attr/textAppearanceLarge"
+                    android:background="@drawable/cardviewclock"
+                    android:layout_height="wrap_content"
+                    android:text="17:32"
+                    android:gravity="center"
+                    android:layout_gravity="center_vertical|left"
+                    android:textColor="@color/civicsmart_black"
+                    android:layout_width="100dp"
+                    android:id="@+id/card_band_clock1" />
+            </LinearLayout>
+            <LinearLayout
+                android:id="@+id/card_band_clock2_layout"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:visibility="visible"
+                android:layout_alignParentRight="true"
+                android:gravity="center">
+                <TextView
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:layout_height="wrap_content"
+                    android:text="Occupied for"
+                    android:layout_width="wrap_content"
+                    android:gravity="center"
+                    android:id="@+id/card_band_clock2_label"
+                    android:textColor="@color/civicsmart_black" />
+                <TextView
+                    android:textAppearance="?android:attr/textAppearanceLarge"
+                    android:layout_height="wrap_content"
+                    android:text="00:19"
+                    android:gravity="center"
+                    android:layout_gravity="center_vertical|right"
+                    android:textColor="@color/civicsmart_black"
+                    android:layout_width="100dp"
+                    android:id="@+id/card_band_clock2"
+                    android:background="@drawable/cardviewclock" />
+            </LinearLayout>
+        </RelativeLayout>
+        <LinearLayout
+            android:id="@+id/card_band_summary"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_marginTop="15dp"
+            android:visibility="visible"
+            android:background="@color/cardview_green"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp">
+            <TextView
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:gravity="center_horizontal"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:text="Expired at 01:12 PM"
+                android:id="@+id/card_band_summary_text1"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:textColor="@color/civicsmart_black"
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="5dp" />
+            <TextView
+                android:textAppearance="?android:attr/textAppearanceSmall"
+                android:gravity="center_horizontal"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:text="Additional Infomation when available"
+                android:layout_marginLeft="10dp"
+                android:id="@+id/card_band_summary_text2"
+                android:layout_marginRight="10dp"
+                android:textColor="@color/civicsmart_black"
+                android:layout_marginBottom="5dp"
+                android:visibility="gone" />
+        </LinearLayout>
+        <RelativeLayout
+            android:id="@+id/card_band_actionbar"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginTop="5dp"
+            android:visibility="visible">
+            <Button
+                android:id="@+id/btnCardViewDisplayImage"
+                android:layout_width="36dp"
+                android:layout_height="36dp"
+                android:gravity="center"
+                android:visibility="visible"
+                android:background="@drawable/ic_photo_camera_black_48dp"
+                android:layout_alignParentLeft="true" />
+            <Button
+                android:id="@+id/btnCardViewExitToApp"
+                android:layout_height="36dp"
+                android:layout_width="36dp"
+                android:gravity="center"
+                android:visibility="visible"
+                android:background="@drawable/ic_exit_to_app_black_48dp"
+                android:layout_alignParentRight="true" />
+        </RelativeLayout>
+        <LinearLayout
+            android:id="@+id/card_band_counter"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_marginTop="15dp"
+            android:visibility="gone"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp">
+            <TextView
+                android:textAppearance="?android:attr/textAppearanceSmall"
+                android:gravity="center_horizontal"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:text="1 of 12"
+                android:layout_marginLeft="10dp"
+                android:id="@+id/card_band_counter_text"
+                android:layout_marginRight="10dp"
+                android:textColor="@color/civicsmart_black"
+                android:visibility="gone"
+                android:layout_marginBottom="5dp" />
+        </LinearLayout>
+    </LinearLayout>
+</RelativeLayout>

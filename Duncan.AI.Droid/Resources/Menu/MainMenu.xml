@@ -1,0 +1,30 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+	<item android:id="@+id/AccountMenuItem"
+	 android:title="Account"
+	 android:icon="@drawable/ic_account_box_black_48dp"
+	 android:showAsAction="always"
+	/>
+
+	<item android:id="@+id/ExitToAppMenuItem"
+	 android:title="App"
+	 android:icon="@drawable/ic_exit_to_app_black_48dp"
+	 android:showAsAction="always"
+	/>
+
+	<item android:id="@+id/MapMenuItem"
+	 android:title="Map"
+	 android:icon="@drawable/ic_menu_autoissue_brand_48dp"
+	 android:showAsAction="always"
+	/>
+
+	<item android:id="@+id/CameraMenuItem"
+	 android:title="Camera"
+	 android:icon="@drawable/ic_photo_camera_black_48dp"
+	 android:showAsAction="always" 
+	/>
+
+</menu>
+
+

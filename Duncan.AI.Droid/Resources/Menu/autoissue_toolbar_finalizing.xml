@@ -1,0 +1,15 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+	<item android:id="@+id/ai_toolbar_back_to_edit" 
+		  android:icon="@drawable/ic_undo_32" 
+		  android:showAsAction="always|withText" 
+		  android:text="BACK TO EDIT"
+		  android:textColor="@color/black"
+		  android:title="Back To Edit" />
+	<item android:id="@+id/ai_toolbar_confirm_and_submit" 
+		  android:icon="@drawable/ic_checked_32" 
+		  android:text="CONFIRM AND SUBMIT"
+		  android:textColor="@color/black"
+		  android:showAsAction="always|withText" 
+		  android:title="Confirm and Submit" />
+</menu>

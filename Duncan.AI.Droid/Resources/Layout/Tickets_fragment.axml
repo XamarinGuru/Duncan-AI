@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent">
+    <Spinner
+        android:id="@+id/ticketTypeSpinner"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_margin="20dp" />
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp">
+        <EditText
+            android:id="@+id/vehNoSearch"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:hint="License Plate"
+            android:inputType="textVisiblePassword" />
+        <EditText
+            android:id="@+id/issueNoSearch"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:hint="Issuance No"
+            android:inputType="textVisiblePassword"
+            android:layout_toRightOf="@+id/vehNoSearch" />
+        <EditText
+            android:id="@+id/locStreetSearch"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Street of Offence"
+            android:inputType="textVisiblePassword"
+            android:layout_below="@id/vehNoSearch" />
+        <Button
+            android:id="@+id/searchButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:text="Search"
+            android:background="@drawable/button"
+            android:textColor="@android:color/white"
+            android:layout_below="@id/locStreetSearch" />
+    </RelativeLayout>
+    <ListView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/list"
+        android:layout_marginTop="20dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp" />
+</LinearLayout>

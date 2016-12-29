@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="@color/civicsmart_white">
+	<TextView
+        android:text="Image Processing"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/lprTitle"
+        android:layout_marginTop="5dp"
+        android:visibility="visible"
+        android:gravity="center"
+        android:textAppearance="?android:attr/textAppearanceLarge" />
+	<TextView
+        android:text=""
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/lprStatus"
+        android:layout_marginTop="5dp"
+        android:visibility="visible"
+        android:gravity="center"
+        android:textAppearance="?android:attr/textAppearanceMedium" />
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/imagelinearLayout">
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:scaleType="fitCenter"
+            android:layout_marginBottom="5dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:id="@+id/platephoto"
+            android:adjustViewBounds="true" />
+    </LinearLayout>
+    <ListView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:id="@+id/candidateslist"
+        android:divider="#FFCC00"
+        android:dividerHeight="4dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp" />
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/linearLayout1">
+        <Button
+            android:text="CANCEL"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:id="@id/btnDiscard"
+            android:layout_marginRight="72.0dp"
+            android:visibility="gone" />
+        <Button
+            android:text="CONFIRM"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:id="@id/btnConfirmPlate"
+            android:layout_marginRight="104.0dp"
+            android:visibility="gone" />
+    </LinearLayout>
+</LinearLayout>

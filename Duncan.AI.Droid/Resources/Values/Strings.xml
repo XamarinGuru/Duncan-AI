@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+  	<string name="City">Android Demo</string>
+    <string name="Version">AutoISSUE Android 7.25.19</string>
+    <string name="Login">LOGIN</string>
+    <string name="ApplicationName">AutoISSUE</string>
+
+    <string name="UserName">Username</string>
+    <string name="Passowrd">Password</string>
+
+    <string name="ActivityLogs">Activity Log</string>
+
+    <string-array name="activities_array">
+     	<item>--Select--</item>
+        <item>Chalking</item>
+        <item>Issue Ticket</item>
+        <item>Lunch</item>
+        <item>Reprint</item>
+    </string-array>
+
+    <string-array name="activities_array2">
+        <item>Chalking  3/18 7AM</item>
+        <item>Issue Ticket 3/18 9AM</item>
+        <item>Lunch 3/18 1PM</item>
+        <item>Reprint 3/18 2PM</item>
+    </string-array>
+
+
+	<string name="drawer_open">Open navigation drawer</string>
+	<string name="drawer_close">Close navigation drawer</string>
+
+
+	<string name="Submit">SUBMIT</string>
+
+    <string name="tab1_text">ACTIVITY</string>
+    <string name="tab2_text">ISSUE</string>
+    <string name="tab3_text">CHALK</string>
+    <string name="tab4_text">TICKETS</string>
+    <string name="tab5_text">CHALKS</string>
+    <string name="tab6_text">TIRE</string>
+
+    <string name="tab1_text_detail">Activity Log</string>
+    <string name="tab2_text_detail">Create Ticket</string>
+    <string name="tab3_text_detail">Chalking</string>
+    <string name="tab4_text_detail">Tickets</string>
+    <string name="tab5_text_detail">Tire Chalking</string>
+
+    <string name="TicketID">Ticket ID</string>
+    <string name="TicketStatus">Ticket Status</string>
+    <string name="SequenceID">Sequence ID</string>
+   
+
+   <string name="IssueNo">Number:</string>
+    <string name="IssuePfx">Prefix:</string>
+    <string name="IssueDate">Date:</string>
+    <string name="IssueStatus">Status:</string>
+
+    <string name="VecNo">Lic:</string>
+    <string name="VecState">State:</string>
+    <string name="VehType">Type:</string>
+    <string name="VehExpDate">Exp Date:</string>
+    <string name="VehVin">Vin:</string>
+    <string name="VehMake">Make:</string>
+
+    <string name="OfficerName">Officer Name:</string>
+    <string name="OfficerId">Officer Id:</string>
+
+    <string name="LocMeter">Meter Id</string>
+    <string name="LocBlock">Block:</string>
+    <string name="LocDirection">Direction:</string>
+    <string name="LocStreet">Street:</string>
+
+    <string name="VioSelect">Select:</string>
+    <string name="VioCode">Code:</string>
+    <string name="VioDesc">Desc:</string>
+    <string name="VioFee">Fee:</string>
+    <string name="VioFine">Fine:</string>
+
+    <string name="ViewTicketButton">View Ticket</string>
+    <string name="PrintButton">PRINT</string>
+    <string name="LocalPrintButton">LOCAL PRINT</string>
+    <string name="VoidButton">VOID</string>
+    <string name="ReIssueButton">REISSUE</string>
+    <string name="NotesButton">NOTES</string>
+
+    <string name="SelectReason">Please Select A Reason To Void</string>
+
+    <string name="BackButton">BACK</string>
+    <string name="IssueAnotherButton">ISSUE ANOTHER</string>
+
+    <string name="One">1</string>
+    <string name="Two">2</string>
+    <string name="Three">3</string>
+    <string name="Four">4</string>
+    <string name="Five">5</string>
+    <string name="Six">6</string>
+    <string name="Seven">7</string>
+    <string name="Eight">8</string>
+    <string name="Nine">9</string>
+    <string name="Ten">10</string>
+    <string name="Eleven">11</string>
+    <string name="Twelve">12</string>
+
+    <string name="RefereshDB">SYNCH</string>
+	  <string name="IssuanceInfo">ISSUANCE INFO</string>
+
+    <string name="Loading">Loading......</string>
+    <string name="Next">NEXT</string>
+    <string name="Name">Serial#</string>
+    <string name="ClientSelect">Select Client</string>
+  
+    <string-array name="ClientsList">
+      <item>New Orleans</item>
+  	  <item>CivicSmart Labs</item>
+
+		<!--
+      <item>Miami Dade</item>
+      <item>CivicSmart Android Demo</item>
+      <item>Glen Eirra</item>
+      <item>AFP</item>
+      <item>Chicago Demo</item>
+      <item>Australian Demo</item>
+      -->
+    
+    </string-array>
+
+	<string-array name="PrintersList">
+		<item>PrinTek FP-530</item>
+		<item>Zebra iMZ 320</item>
+		<item>Zebra MZ 320</item>
+		<item>Zebra ZQ 510</item>
+	</string-array>
+
+</resources>

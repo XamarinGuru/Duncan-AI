@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<discovery xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://schemas.xmlsoap.org/disco/">
+  <contractRef ref="http://sales.duncan-usa.com/ReinoWebServices/US Parking DemoAutoISSUEpublic/AutoISSUEpublicService.asmx?wsdl" docRef="http://sales.duncan-usa.com/ReinoWebServices/US Parking DemoAutoISSUEpublic/AutoISSUEpublicService.asmx" xmlns="http://schemas.xmlsoap.org/disco/scl/" />
+  <soap address="http://sales.duncan-usa.com/ReinoWebServices/US%20Parking%20DemoAutoISSUEpublic/AutoISSUEpublicService.asmx" xmlns:q1="http://www.autocite.com/autoissue_dotnet/autoissuepublicservice" binding="q1:AutoISSUEPublicServiceSoap" xmlns="http://schemas.xmlsoap.org/disco/soap/" />
+  <soap address="http://sales.duncan-usa.com/ReinoWebServices/US%20Parking%20DemoAutoISSUEpublic/AutoISSUEpublicService.asmx" xmlns:q2="http://www.autocite.com/autoissue_dotnet/autoissuepublicservice" binding="q2:AutoISSUEPublicServiceSoap12" xmlns="http://schemas.xmlsoap.org/disco/soap/" />
+</discovery>

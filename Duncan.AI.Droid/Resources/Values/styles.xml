@@ -1,0 +1,34 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+<!--<style name="ActionBarTabStyle" parent="@android:style/Widget.Holo.ActionBar.TabView">
+    <item name="android:background">@android:color/transparent</item>
+
+    <item name="android:paddingLeft">20dp</item>
+    <item name="android:paddingRight">20dp</item>
+</style>-->
+
+<style name="TabViewNoPadding" parent="@android:style/Widget.Holo.Light.ActionBar.TabView.Inverse">
+    <item name="android:padding">0dp</item>
+</style>
+
+	<style name="MyTheme.Base" parent="@android:style/Theme.Holo.Light">
+		<item name="android:actionButtonStyle">@style/ActionButtonStyle</item>
+	</style>
+
+	<style name="MyTheme" parent="MyTheme.Base">
+	</style>
+	
+	<style name="MyTheme.Splash" parent ="Theme.AppCompat.Light">
+		<item name="android:windowBackground">@drawable/splashscreen_background</item>
+		<item name="android:windowSoftInputMode">stateHidden</item>
+		<item name="android:windowNoTitle">true</item>
+	</style>
+
+	<style name="ActionButtonStyle" parent="@android:style/Widget.Holo.Light.ActionButton">
+		<item name="android:minWidth">0dip</item>
+		<item name="android:paddingLeft">0dip</item>
+		<item name="android:paddingRight">0dip</item>
+	</style>
+
+</resources>

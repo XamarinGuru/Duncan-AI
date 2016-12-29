@@ -1,0 +1,18 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+	<item android:id="@+id/notes_new_photo"
+		  android:showAsAction="always|withText"
+		  android:text="PHOTO"
+		  android:textColor="@color/black"
+		  android:title="PHOTO" />
+	<item android:id="@+id/notes_new_cancel" 
+		  android:showAsAction="always|withText" 
+		  android:text="CANCEL"
+		  android:textColor="@color/black"
+		  android:title="CANCEL" />
+	<item android:id="@+id/notes_new_done" 
+		  android:text="SAVE"
+		  android:textColor="@color/black"
+		  android:showAsAction="always|withText" 
+		  android:title="Save" />
+</menu>

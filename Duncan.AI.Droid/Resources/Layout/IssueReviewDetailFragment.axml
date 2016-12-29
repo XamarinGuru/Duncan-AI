@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:background="@color/civicsmart_white"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent">
+    <RelativeLayout xmlns:local="http://schemas.android.com/apk/res-auto"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:fitsSystemWindows="true"
+        android:layout_alignParentBottom="true">
+        <ScrollView
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:fadeScrollbars="false"
+            android:id="@+id/ticketdetailscrollviewMain"
+            android:fillViewport="true">
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="20dp"
+                android:id="@+id/LinearLayoutMain"
+                android:orientation="vertical">
+                <LinearLayout
+                    android:id="@+id/RecordInfoContainer"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/login_background"
+                    android:orientation="vertical"
+                    android:layout_marginBottom="10dp">
+                    <LinearLayout
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+                        <TextView
+                            android:text="Review and Confirm"
+                            android:textAppearance="?android:attr/textAppearanceLarge"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:id="@+id/recordinfoprimary"
+                            android:layout_gravity="center"
+                            android:textColor="@android:color/white" />
+                        <TextView
+                            android:text="ABC123 FL"
+                            android:textAppearance="?android:attr/textAppearanceLarge"
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:id="@+id/licenseplate"
+                            android:layout_gravity="center"
+                            android:textColor="@android:color/white" />
+                        <TextView
+                            android:text="77601229 01/08/2016 at 10:25 AM"
+                            android:textAppearance="?android:attr/textAppearanceMedium"
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:id="@+id/recordinfosecondary"
+                            android:layout_gravity="center"
+                            android:textColor="@android:color/white" />
+                        <TextView
+                            android:text="Not Voided"
+                            android:textAppearance="?android:attr/textAppearanceMedium"
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:id="@+id/voidstatus"
+                            android:layout_gravity="center"
+                            android:textColor="@android:color/white" />
+                        <TextView
+                            android:text="Not Reissued"
+                            android:textAppearance="?android:attr/textAppearanceMedium"
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:id="@+id/reissuestatus"
+                            android:layout_gravity="center"
+                            android:textColor="@android:color/white" />
+                    </LinearLayout>
+                </LinearLayout>
+                <LinearLayout
+                    android:orientation="vertical"
+                    android:minWidth="25px"
+                    android:minHeight="25px"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/linearLayout1">
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/imageReproduction"
+                        android:scaleType="fitCenter"
+                        android:adjustViewBounds="true"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginTop="5dp"
+                        android:layout_marginRight="10dp"
+                        android:layout_marginBottom="5dp"
+                        android:background="@drawable/parking_ticket_placeholder2" />
+                </LinearLayout>
+                <LinearLayout
+                    android:orientation="vertical"
+                    android:layout_height="wrap_content"
+                    android:layout_width="wrap_content"
+                    android:background="@drawable/EditTextDisabled"
+                    android:id="@+id/linearLayoutNotesList">
+                    <ListView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/noteslist"
+                        android:cacheColorHint="#00000000"
+                        android:layout_marginTop="20dp"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginRight="10dp"
+                        android:layout_marginBottom="20dp" />
+                </LinearLayout>
+            </LinearLayout>
+        </ScrollView>
+        <LinearLayout
+            style="?android:attr/buttonBarStyle"
+            android:id="@+id/toolbar_bottom_review_layout"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:measureWithLargestChild="true"
+            android:orientation="horizontal"
+            android:visibility="visible"
+            android:paddingTop="0dip">
+            <Button
+                style="?android:attr/buttonBarButtonStyle"
+                android:id="@+id/btnAddNotes"
+                android:layout_width="0dip"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:textColor="#ffffff"
+                android:text="NOTES" />
+            <Button
+                style="?android:attr/buttonBarButtonStyle"
+                android:id="@+id/btnReviewPrint"
+                android:layout_width="0dip"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:textColor="#ffffff"
+                android:text="PRINT" />
+            <Button
+                style="?android:attr/buttonBarButtonStyle"
+                android:id="@+id/btnAction"
+                android:layout_width="0dip"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:textColor="#ffffff"
+                android:text="ACTION" />
+            <Button
+                style="?android:attr/buttonBarButtonStyle"
+                android:id="@+id/BackButton2"
+                android:layout_width="0dip"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:textColor="#ffffff"
+                android:text="DONE" />
+        </LinearLayout>
+    </RelativeLayout>
+</LinearLayout>

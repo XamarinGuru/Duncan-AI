@@ -1,0 +1,31 @@
+﻿<Properties StartupConfiguration="{DA2923E4-62ED-40C7-9D3B-B31CA0A83951}|Default">
+  <MonoDevelop.Ide.Workbench>
+    <Pads>
+      <Pad Id="ProjectPad">
+        <State name="__root__">
+          <Node name="Duncan.AI" expanded="True">
+            <Node name="Duncan.AI" expanded="True" />
+            <Node name="Duncan.AI.Droid" expanded="True">
+              <Node name="Packages" expanded="True">
+                <Node name="Xamarin.Android.Support.v7.AppCompat" selected="True" />
+              </Node>
+            </Node>
+          </Node>
+        </State>
+      </Pad>
+    </Pads>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore>
+      <Breakpoint file="C:\DuncanWorkspace\DuncanAI\Duncan.AI.Droid\AndroidService\ParkNotesService.cs" line="64" column="1" />
+      <Breakpoint file="C:\DuncanWorkspace\DuncanAI\Duncan.AI.Droid\AndroidService\ParkNotesService.cs" line="81" column="1" />
+      <Breakpoint file="C:\DuncanWorkspace\DuncanAI\Duncan.AI.Droid\ADONet\CommonADO.cs" line="320" column="1" />
+      <Breakpoint file="C:\DuncanWorkspace\DuncanAI\Duncan.AI.Droid\ADONet\ListSupport.cs" line="162" column="1" />
+    </BreakpointStore>
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MonoDevelop.Ide.ItemProperties.Duncan.AI.Droid PreferredExecutionTarget="Android.Xamarin_Android_API_23" AndroidDeviceId-Debug="4ed726b9" AndroidDeviceId-Release="4ed726b9" MonoForAntroid.PreferredDevice="3.7&quot; WVGA (Nexus One)" />
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches>
+    <Watch file="DuncanWebServicesClient\Services\TicketService.cs" line="17" offsetX="245" offsetY="272" expression="dataSet" liveUpdate="False" />
+  </MonoDevelop.Ide.DebuggingService.PinnedWatches>
+</Properties>

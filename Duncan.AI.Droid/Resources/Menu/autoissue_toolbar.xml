@@ -1,0 +1,27 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+	<item android:id="@+id/ai_toolbar_listprev" 
+		  android:icon="@drawable/ic_list_previous_r2_48dp" 
+		  android:showAsAction="always" 
+		  android:title="List Item Previous" />
+	<item android:id="@+id/ai_toolbar_listnext" 
+		  android:icon="@drawable/ic_list_next_r2_48dp" 
+		  android:showAsAction="always" 
+		  android:title="List Item Next" />
+	<item android:id="@+id/ai_toolbar_clear"
+		  android:icon="@drawable/ic_cancel_black_36dp"
+		  android:showAsAction="always"
+		  android:title="Clear Field" />
+	<item android:id="@+id/ai_toolbar_tabprev" 
+		  android:icon="@drawable/ic_navigate_before_black_36dp" 
+		  android:showAsAction="always" 
+		  android:title="Field Previous" />
+  	<item android:id="@+id/ai_toolbar_tabnext" 
+		  android:icon="@drawable/ic_navigate_next_black_36dp" 
+		  android:showAsAction="always" 
+		  android:title="Field Next" />
+	<item android:id="@+id/ai_toolbar_pagenext"
+		  android:icon="@drawable/ic_offline_pin_black_36dp"
+		  android:showAsAction="always"
+		  android:title="Page Next" />
+</menu>

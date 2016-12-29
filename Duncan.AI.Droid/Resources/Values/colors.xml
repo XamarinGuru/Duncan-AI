@@ -1,0 +1,18 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<resources>
+	<color name="civicsmart_orange">#FF6E2B</color>
+	<color name="alert_red">#F44336</color>
+	<color name="ok_green">#4CAF50</color>
+	<color name="cardview_green">#92D14F</color>
+	<color name="cardview_yellow">#FFAB40</color>
+	<color name="cardview_red">#F44336</color>
+	<color name="neutral_orange">#FF8A65</color>
+	<color name="secondary_orange">#952E00</color>
+	<color name="gray">#404040</color>
+	<color name="black">#0D0D0D</color>
+	<color name="civicsmart_gray">#d6dee3</color>
+	<color name="civicsmart_gray_light">#F0F3F5</color>
+	<color name="civicsmart_black">#000000</color>
+	<color name="civicsmart_white">#FFFFFF</color>
+	<color name="civicsmart_green_safety_glow">#CCFF00</color>
+</resources>

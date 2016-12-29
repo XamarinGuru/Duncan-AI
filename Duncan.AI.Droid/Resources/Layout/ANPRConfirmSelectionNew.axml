@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="@color/civicsmart_white">
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/lprResult"
+        android:background="@drawable/EditTextFocusLost"
+        android:layout_marginRight="20dp"
+        android:layout_marginLeft="20dp"
+        android:editable="false" />
+    <TextView
+        android:text=""
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/lblLPRResults" />
+    <TextView
+        android:text=""
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/lblLPRConfidence" />
+	<LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="240dip"
+        android:id="@+id/linearLayoutImage">
+		<ImageView
+        android:layout_marginTop="5dp"
+        android:layout_width="wrap_content"
+		android:maxWidth="60dip"
+        android:layout_height="wrap_content"
+		android:maxHeight="40dip"
+        android:scaleType="fitCenter"
+        android:layout_marginBottom="5dp"
+        android:id="@+id/platephoto"
+        android:adjustViewBounds="true" />
+	</LinearLayout>
+	<ListView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/candidateslist"
+        android:layout_marginTop="20dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp" />
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/linearLayout1">
+        <Button
+            android:text="CANCEL"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:id="@id/btnDiscard"
+            android:layout_marginRight="72.0dp"
+            android:visibility="gone" />
+        <Button
+            android:text="CONFIRM"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:id="@id/btnConfirmPlate"
+            android:layout_marginRight="104.0dp"
+            android:visibility="gone" />
+    </LinearLayout>
+</LinearLayout>

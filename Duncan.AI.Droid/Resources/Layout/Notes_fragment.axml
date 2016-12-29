@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent">
+    <ListView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:id="@+id/list"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp" />
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_margin="20dp"
+        android:id="@+id/linearLayout1">
+        <TextView
+            android:text="(no notes found)"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/NoNotes"
+            android:layout_marginTop="20dp"
+            android:visibility="invisible" />
+        <Button
+            android:id="@+id/btnNew"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:text="NEW NOTE"
+            android:visibility="invisible"
+            android:background="@drawable/button"
+            android:textColor="@android:color/white" />
+        <Button
+            android:id="@+id/btnBack"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:text="@string/BackButton"
+            android:background="@drawable/button_back"
+            android:textColor="@android:color/white" />
+    </LinearLayout>
+</LinearLayout>

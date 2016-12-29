@@ -1,0 +1,22 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<shape xmlns:android="http://schemas.android.com/apk/res/android" android:shape="rectangle">
+	<stroke
+		android:width="2dp"
+		android:color="@color/civicsmart_gray" />
+	<solid
+		android:color="@color/civicsmart_gray_light" />
+	/>
+
+	<!-- corner radius -->
+	<corners
+		android:radius="0dp"
+	/>
+	<padding
+		android:bottom="5dp"
+		android:left="0dp"
+		android:right="0dp"
+		android:top="5dp"
+		/>
+</shape>
+	
+		

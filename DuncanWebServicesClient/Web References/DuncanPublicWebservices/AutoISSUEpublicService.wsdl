@@ -1,0 +1,2939 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://www.autocite.com/autoissue_dotnet/autoissuepublicservice" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://www.autocite.com/autoissue_dotnet/autoissuepublicservice" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://www.autocite.com/autoissue_dotnet/autoissuepublicservice">
+      <s:element name="GetVersion">
+        <s:complexType />
+      </s:element>
+      <s:element name="GetVersionResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetVersionResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="StartEnforcementSession">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="iSerialNo" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="iOfficerName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="iOfficerID" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="iCustID" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="iDuncanClusterID" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="oErrMsg" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="StartEnforcementSessionResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="StartEnforcementSessionResult" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="oErrMsg" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="StopEnforcementSession">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="iSerialNo" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="iOfficerName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="iOfficerID" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="iCustID" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="iParkeonSessionID" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="oErrMsg" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="StopEnforcementSessionResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="oErrMsg" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ConvertLegacyParkeonLogFiles">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="legacyLogFilesPath" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ConvertLegacyParkeonLogFilesResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ConvertLegacyParkeonLogFilesResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Parkeon_GetDatasetXML_RealTimeStatistics">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="CompressResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Parkeon_GetDatasetXML_RealTimeStatisticsResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Parkeon_GetDatasetXML_RealTimeStatisticsResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Parkeon_GetDataSetForKnownHistoricalReport">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ReportRequest" type="tns:DataRequest" />
+            <s:element minOccurs="1" maxOccurs="1" name="CompressResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="DataRequest">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="RequestType" type="tns:DataRequsetType" />
+          <s:element minOccurs="1" maxOccurs="1" name="KnownReport" type="tns:KnownReports" />
+          <s:element minOccurs="0" maxOccurs="1" name="Filters" type="tns:ArrayOfFilterParameter" />
+          <s:element minOccurs="0" maxOccurs="1" name="AdHocSQL" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:simpleType name="DataRequsetType">
+        <s:restriction base="s:string">
+          <s:enumeration value="KnownReport" />
+          <s:enumeration value="AdHoc" />
+        </s:restriction>
+      </s:simpleType>
+      <s:simpleType name="KnownReports">
+        <s:restriction base="s:string">
+          <s:enumeration value="Warnings" />
+          <s:enumeration value="Sessions" />
+          <s:enumeration value="MeterStatusRequests" />
+          <s:enumeration value="Errors" />
+          <s:enumeration value="ActivityResearch" />
+        </s:restriction>
+      </s:simpleType>
+      <s:complexType name="ArrayOfFilterParameter">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="FilterParameter" nillable="true" type="tns:FilterParameter" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="FilterParameter">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="Name" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Value" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="DataType" type="tns:DbType" />
+          <s:element minOccurs="1" maxOccurs="1" name="Comparison" type="tns:FilterComparisonType" />
+        </s:sequence>
+      </s:complexType>
+      <s:simpleType name="DbType">
+        <s:restriction base="s:string">
+          <s:enumeration value="AnsiString" />
+          <s:enumeration value="Binary" />
+          <s:enumeration value="Byte" />
+          <s:enumeration value="Boolean" />
+          <s:enumeration value="Currency" />
+          <s:enumeration value="Date" />
+          <s:enumeration value="DateTime" />
+          <s:enumeration value="Decimal" />
+          <s:enumeration value="Double" />
+          <s:enumeration value="Guid" />
+          <s:enumeration value="Int16" />
+          <s:enumeration value="Int32" />
+          <s:enumeration value="Int64" />
+          <s:enumeration value="Object" />
+          <s:enumeration value="SByte" />
+          <s:enumeration value="Single" />
+          <s:enumeration value="String" />
+          <s:enumeration value="Time" />
+          <s:enumeration value="UInt16" />
+          <s:enumeration value="UInt32" />
+          <s:enumeration value="UInt64" />
+          <s:enumeration value="VarNumeric" />
+          <s:enumeration value="AnsiStringFixedLength" />
+          <s:enumeration value="StringFixedLength" />
+          <s:enumeration value="Xml" />
+          <s:enumeration value="DateTime2" />
+          <s:enumeration value="DateTimeOffset" />
+        </s:restriction>
+      </s:simpleType>
+      <s:simpleType name="FilterComparisonType">
+        <s:restriction base="s:string">
+          <s:enumeration value="EqualTo" />
+          <s:enumeration value="LessThan" />
+          <s:enumeration value="LessThanOrEqual" />
+          <s:enumeration value="GreaterThan" />
+          <s:enumeration value="GreaterThanOrEqual" />
+          <s:enumeration value="IsNull" />
+          <s:enumeration value="IsNotNull" />
+          <s:enumeration value="IsInList" />
+          <s:enumeration value="IsNotInList" />
+        </s:restriction>
+      </s:simpleType>
+      <s:element name="Parkeon_GetDataSetForKnownHistoricalReportResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Parkeon_GetDataSetForKnownHistoricalReportResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Parkeon_GetActivityBlob">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="ActivityUniqueKey" type="s:long" />
+            <s:element minOccurs="0" maxOccurs="1" name="ParkeonDBLogFilename" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Parkeon_GetActivityBlobResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Parkeon_GetActivityBlobResult" type="s:base64Binary" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Parkeon_GetActivityDetailBlob">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="ActivityDetailUniqueKey" type="s:long" />
+            <s:element minOccurs="0" maxOccurs="1" name="ParkeonDBLogFilename" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Parkeon_GetActivityDetailBlobResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Parkeon_GetActivityDetailBlobResult" type="s:base64Binary" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CompressString">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="text" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CompressStringResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="CompressStringResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DecompressString">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="compressedText" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DecompressStringResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="DecompressStringResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="PAMClusterStatusRequest">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="iSerialNo" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="iOfficerName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="iOfficerID" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="iCustID" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="iMeterID" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="oErrMsg" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="PAMClusterStatusRequestResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="PAMClusterStatusRequestResult" type="s:base64Binary" />
+            <s:element minOccurs="0" maxOccurs="1" name="oErrMsg" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="oPAMClusterInfo" type="tns:PAMClusterInfo" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="PAMClusterInfo">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="ClusterID" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Meters" type="tns:ArrayOfPAMMeterInfo" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfPAMMeterInfo">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="PAMMeterInfo" nillable="true" type="tns:PAMMeterInfo" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="PAMMeterInfo">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="MeterID" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="LastUpdated" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="LastUpdatedMinutesAgo" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="Bays" type="tns:ArrayOfPAMBayInfo" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfPAMBayInfo">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="PAMBayInfo" nillable="true" type="tns:PAMBayInfo" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="PAMBayInfo">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="BayID" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="ExpiredTime" type="s:dateTime" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="PAMorDPTMeterStatusRequest">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="iSerialNo" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="iOfficerName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="iOfficerID" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="iCustID" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="iMeterIDOrDPTStallRange" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="iDPTStallRangeMode" type="s:boolean" />
+            <s:element minOccurs="0" maxOccurs="1" name="oErrMsg" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="PAMorDPTMeterStatusRequestResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="PAMorDPTMeterStatusRequestResult" type="s:base64Binary" />
+            <s:element minOccurs="0" maxOccurs="1" name="oErrMsg" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="oPAMClusterInfo" type="tns:PAMClusterInfo" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="MeterStatusRequest">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="iSerialNo" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="iOfficerName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="iOfficerID" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="iCustID" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="iMeterIDOrDPTStallRange" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="iMeterStatusProvider" type="tns:MeterStatusProvider" />
+            <s:element minOccurs="1" maxOccurs="1" name="iSpaceStatusSessionID" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="oErrMsg" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="oWarnings" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:simpleType name="MeterStatusProvider">
+        <s:restriction base="s:string">
+          <s:enumeration value="Duncan" />
+          <s:enumeration value="DPT" />
+          <s:enumeration value="Parkeon" />
+          <s:enumeration value="ParkNOW" />
+          <s:enumeration value="Verrus" />
+          <s:enumeration value="Pango" />
+          <s:enumeration value="MultiVendor" />
+          <s:enumeration value="Passport" />
+        </s:restriction>
+      </s:simpleType>
+      <s:element name="MeterStatusRequestResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="MeterStatusRequestResult" type="s:base64Binary" />
+            <s:element minOccurs="0" maxOccurs="1" name="oErrMsg" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="oWarnings" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="oPAMClusterInfo" type="tns:PAMClusterInfo" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SmallXMLMeterStatusRequest">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="iSerialNo" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="iOfficerName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="iOfficerID" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="iCustID" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="iMeterIDOrDPTStallRange" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="iMeterStatusProvider" type="tns:MeterStatusProvider" />
+            <s:element minOccurs="1" maxOccurs="1" name="iSpaceStatusSessionID" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="oErrMsg" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="oWarnings" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SmallXMLMeterStatusRequestResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="SmallXMLMeterStatusRequestResult" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="oErrMsg" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="oWarnings" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SmallXMLMeterStatusRequest_MultiVendor">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="iSerialNo" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="iOfficerName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="iOfficerID" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="iCustID" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="iZoneSelectID" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="iMeterSelectID" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="iMeterStatusProvider" type="tns:MeterStatusProvider" />
+            <s:element minOccurs="0" maxOccurs="1" name="oErrMsg" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="oWarnings" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SmallXMLMeterStatusRequest_MultiVendorResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="SmallXMLMeterStatusRequest_MultiVendorResult" type="s:base64Binary" />
+            <s:element minOccurs="0" maxOccurs="1" name="oErrMsg" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="oWarnings" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SearchHotSheet">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="iSerialNo" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="iOfficerName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="iOfficerID" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="iSearchStructName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="iSearchParams" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="oErrMsg" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SearchHotSheetResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="SearchHotSheetResult" type="s:base64Binary" />
+            <s:element minOccurs="0" maxOccurs="1" name="oErrMsg" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SearchHotSheetLOCAL">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="iSerialNo" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="iOfficerName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="iOfficerID" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="iSearchStructName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="iSearchParams" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="oErrMsg" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SearchHotSheetLOCALResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="SearchHotSheetLOCALResult" type="s:base64Binary" />
+            <s:element minOccurs="0" maxOccurs="1" name="oErrMsg" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CreateWirelessSession">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="iSerialNo" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="iOfficerName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="iOfficerID" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="iTimeStamp" type="s:dateTime" />
+            <s:element minOccurs="0" maxOccurs="1" name="oErrMsg" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CreateWirelessSessionResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="CreateWirelessSessionResult" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="oErrMsg" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CreateWirelessSessionLOCAL">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="iSerialNo" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="iOfficerName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="iOfficerID" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="iTimeStamp" type="s:dateTime" />
+            <s:element minOccurs="0" maxOccurs="1" name="oErrMsg" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CreateWirelessSessionLOCALResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="CreateWirelessSessionLOCALResult" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="oErrMsg" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="PutWirelessFile">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="iSerialNo" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="iOfficerName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="iOfficerID" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="iSessionFolder" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="iFileName" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="iFileTimeStamp" type="s:dateTime" />
+            <s:element minOccurs="0" maxOccurs="1" name="iFileBytes" type="s:base64Binary" />
+            <s:element minOccurs="0" maxOccurs="1" name="oErrMsg" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="PutWirelessFileResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="PutWirelessFileResult" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="oErrMsg" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="PutWirelessFileLOCAL">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="iSerialNo" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="iOfficerName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="iOfficerID" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="iSessionFolder" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="iFileName" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="iFileTimeStamp" type="s:dateTime" />
+            <s:element minOccurs="0" maxOccurs="1" name="iFileBytes" type="s:base64Binary" />
+            <s:element minOccurs="0" maxOccurs="1" name="oErrMsg" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="PutWirelessFileLOCALResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="PutWirelessFileLOCALResult" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="oErrMsg" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="EndWirelessSession">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="iSerialNo" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="iOfficerName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="iOfficerID" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="iSessionFolder" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="oErrMsg" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="EndWirelessSessionResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="EndWirelessSessionResult" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="oErrMsg" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="EndWirelessSessionLOCAL">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="iSerialNo" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="iOfficerName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="iOfficerID" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="iSessionFolder" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="oErrMsg" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="EndWirelessSessionLOCALResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="EndWirelessSessionLOCALResult" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="oErrMsg" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="BackAtcha">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="InString" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="OutString" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="BackAtchaResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="BackAtchaResult" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="OutString" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="WirelessLocationTest">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="HHSerial" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="LocBlock" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="LocStreet" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="ModemSignalStrength" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Timestamp" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="oErrMsg" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="WirelessLocationTestResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="WirelessLocationTestResult" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="oErrMsg" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="WirelessCoverageTestLog">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="strToLog" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="oErrMsg" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="WirelessCoverageTestLogResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="WirelessCoverageTestLogResult" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="oErrMsg" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="LogCoverageTestEntry">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="iClientName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="iTestName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="iDeviceSerialNo" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="iLogEntry" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="oErrMsg" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="LogCoverageTestEntryResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="LogCoverageTestEntryResult" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="oErrMsg" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ImportRecord">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="iSerialNo" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="iOfficerName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="iOfficerID" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="iMasterStructName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="iMasterKeyValues" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="iStructName" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="iStructCfgRev" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="iStructBytes" type="s:base64Binary" />
+            <s:element minOccurs="0" maxOccurs="1" name="iAttachmentBytes" type="s:base64Binary" />
+            <s:element minOccurs="0" maxOccurs="1" name="oErrMsg" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ImportRecordResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="ImportRecordResult" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="oErrMsg" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ImportRecordLOCAL">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="iSerialNo" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="iOfficerName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="iOfficerID" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="iMasterStructName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="iMasterKeyValues" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="iStructName" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="iStructCfgRev" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="iStructBytes" type="s:base64Binary" />
+            <s:element minOccurs="0" maxOccurs="1" name="iAttachmentBytes" type="s:base64Binary" />
+            <s:element minOccurs="0" maxOccurs="1" name="oErrMsg" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ImportRecordLOCALResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="ImportRecordLOCALResult" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="oErrMsg" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="PayByPhone_GetZoneStatus_LocalTest">
+        <s:complexType />
+      </s:element>
+      <s:element name="PayByPhone_GetZoneStatus_LocalTestResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="PayByPhone_GetZoneStatus_LocalTestResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="PayByPhone_GetZoneStatus">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="iSerialNo" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="iOfficerName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="iOfficerID" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="iZoneID" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="oErrMsg" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="PayByPhone_GetZoneStatusResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="PayByPhone_GetZoneStatusResult" type="s:base64Binary" />
+            <s:element minOccurs="0" maxOccurs="1" name="oErrMsg" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="PayByPhone_GetVehicleStatus">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="iSerialNo" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="iOfficerName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="iOfficerID" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="iZoneID" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="iVehLicNo" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="iVehLicState" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="oErrMsg" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="PayByPhone_GetVehicleStatusResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="PayByPhone_GetVehicleStatusResult" type="s:base64Binary" />
+            <s:element minOccurs="0" maxOccurs="1" name="oErrMsg" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CloseOutCurrentUserFromDatabase">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="pUser_Session_KeyStr" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="pAuthenticateKey" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="oErrMsg" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CloseOutCurrentUserFromDatabaseResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="CloseOutCurrentUserFromDatabaseResult" type="s:boolean" />
+            <s:element minOccurs="0" maxOccurs="1" name="oErrMsg" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SyncSession_Authenticate">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="iUserName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="iUserPwd" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="iSerialNo" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="oErrMsg" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SyncSession_AuthenticateResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="SyncSession_AuthenticateResult" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="oErrMsg" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="oHostSessionKey" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="oAssignedSubConfigKey" type="s:long" />
+            <s:element minOccurs="0" maxOccurs="1" name="oCustomerCfg" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="oSerialNoStatus" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="oAvailableSerialNos" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SyncSession_ClaimSerialNo">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="iHostEncryptedSessionKey" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="iHostSessionKey" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="iSerialNo" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="oErrMsg" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SyncSession_ClaimSerialNoResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="SyncSession_ClaimSerialNoResult" type="s:boolean" />
+            <s:element minOccurs="0" maxOccurs="1" name="oErrMsg" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SyncSession_ReleaseSerialNo">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="iHostEncryptedSessionKey" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="iHostSessionKey" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="iSerialNo" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="oErrMsg" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SyncSession_ReleaseSerialNoResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="SyncSession_ReleaseSerialNoResult" type="s:boolean" />
+            <s:element minOccurs="0" maxOccurs="1" name="oErrMsg" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SyncSession_Begin">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="iHostEncryptedSessionKey" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="iHostSessionKey" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="iSerialNo" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="iSerializedClientFileList" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="oErrMsg" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SyncSession_BeginResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="SyncSession_BeginResult" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="oErrMsg" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="oSessionName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="oSerializedDownloadPlatformFiles" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="oSerializedDownloadCompositeFiles" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="oSerializedDownloadConfigFiles" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="oSerializedUploadFileList" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="oSerializedDeleteFileList" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="oAssignedSubConfigKey" type="s:long" />
+            <s:element minOccurs="0" maxOccurs="1" name="oCustomerCfg" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="oSerialNoStatus" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="oSequenceNames" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CreateFileInCommSession">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="iSessionFolder" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="iFileName" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="iFileTimeStamp" type="s:dateTime" />
+            <s:element minOccurs="0" maxOccurs="1" name="iFileBytes" type="s:base64Binary" />
+            <s:element minOccurs="0" maxOccurs="1" name="pAuthenticateKey" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="oErrMsg" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CreateFileInCommSessionResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="oErrMsg" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ImportCommSessionData">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="iSessionFolder" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="iSerialNo" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="pAuthenticateKey" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="oErrMsg" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ImportCommSessionDataResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="oErrMsg" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetHHConfigFile">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="iSerialNo" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="iCustomerCfg" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="iFileName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="pAuthenticateKey" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="oErrMsg" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetHHConfigFileResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetHHConfigFileResult" type="s:base64Binary" />
+            <s:element minOccurs="0" maxOccurs="1" name="oErrMsg" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetHHPlatformFile">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="iSerialNo" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="iFileName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="pAuthenticateKey" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="oErrMsg" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetHHPlatformFileResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetHHPlatformFileResult" type="s:base64Binary" />
+            <s:element minOccurs="0" maxOccurs="1" name="oErrMsg" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="RefreshCompositeFiles">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="serializedFileSet" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="iSubConfigKey" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="pAuthenticateKey" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="errorMessage" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="RefreshCompositeFilesResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="RefreshCompositeFilesResult" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="errorMessage" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="RefreshCompositeFiles2">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="iSerialNo" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="serializedFileSet" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="iSubConfigKey" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="pAuthenticateKey" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="errorMessage" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="RefreshCompositeFiles2Response">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="RefreshCompositeFiles2Result" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="errorMessage" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DownloadACompositeFileChunk">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="iSerialNo" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="serializedFileSet" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="chunkStartByte" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="chunkLength" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="iSubConfigKey" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="pAuthenticateKey" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="errorMessage" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DownloadACompositeFileChunkResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="DownloadACompositeFileChunkResult" type="s:base64Binary" />
+            <s:element minOccurs="0" maxOccurs="1" name="errorMessage" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GenerateHandheldUserStructFile">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="iSerialNo" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="pAuthenticateKey" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="oErrMsg" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GenerateHandheldUserStructFileResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GenerateHandheldUserStructFileResult" type="s:base64Binary" />
+            <s:element minOccurs="0" maxOccurs="1" name="oErrMsg" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GenerateHandheldUserStructFile_Ex">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="iSerialNo" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="pAuthenticateKey" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="oErrMsg" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="oDestFilename" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GenerateHandheldUserStructFile_ExResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GenerateHandheldUserStructFile_ExResult" type="s:base64Binary" />
+            <s:element minOccurs="0" maxOccurs="1" name="oErrMsg" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="oDestFilename" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetNewUnitBooks">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="iSerialNo" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="iSequenceName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="pAuthenticateKey" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="oErrMsg" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetNewUnitBooksResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetNewUnitBooksResult" type="s:base64Binary" />
+            <s:element minOccurs="0" maxOccurs="1" name="oErrMsg" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="InsertCommLogIntoTable">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="iUnitSerialNo" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="iObject" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="iVerb" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="iCount" type="s:long" />
+            <s:element minOccurs="0" maxOccurs="1" name="pAuthenticateKey" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="iComputerName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="oErrMsg" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="InsertCommLogIntoTableResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="oErrMsg" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UploadAutoVuData">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="iSerialNo" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="iOfficerName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="iOfficerID" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="iAutoVuReturnStr" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="oErrMsg" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UploadAutoVuDataResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="oErrMsg" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="AcknowledgeProcessedDuncanAutoVuHit">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="iSerialNo" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="iOfficerName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="iOfficerID" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="iHitID" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="oErrMsg" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="AcknowledgeProcessedDuncanAutoVuHitResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="oErrMsg" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DownloadDuncanAutoVuHits">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="iSerialNo" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="iOfficerName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="iOfficerID" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="iImageEncoding" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="iZoneFilter" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="oErrMsg" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DownloadDuncanAutoVuHitsResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="DownloadDuncanAutoVuHitsResult" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="oErrMsg" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DownloadDuncanAutoVuHitsCompressed">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="iSerialNo" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="iOfficerName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="iOfficerID" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="iImageEncoding" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="iZoneFilter" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="iCompressionMode" type="tns:WebResponseCompressionMode" />
+            <s:element minOccurs="0" maxOccurs="1" name="oErrMsg" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:simpleType name="WebResponseCompressionMode">
+        <s:restriction base="s:string">
+          <s:enumeration value="None" />
+          <s:enumeration value="SomeZip" />
+        </s:restriction>
+      </s:simpleType>
+      <s:element name="DownloadDuncanAutoVuHitsCompressedResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="DownloadDuncanAutoVuHitsCompressedResult" type="s:base64Binary" />
+            <s:element minOccurs="0" maxOccurs="1" name="oErrMsg" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DownloadDuncanAutoVuHit">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="iSerialNo" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="iOfficerName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="iOfficerID" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="iImageEncoding" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="iHitID" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="oErrMsg" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DownloadDuncanAutoVuHitResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="DownloadDuncanAutoVuHitResult" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="oErrMsg" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DownloadNextDuncanAutoVuHit">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="iSerialNo" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="iOfficerName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="iOfficerID" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="iImageEncoding" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="oErrMsg" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DownloadNextDuncanAutoVuHitResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="DownloadNextDuncanAutoVuHitResult" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="oErrMsg" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DownloadNextDuncanAutoVuHit_SAMPLE">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="iImageEncoding" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DownloadNextDuncanAutoVuHit_SAMPLEResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="DownloadNextDuncanAutoVuHit_SAMPLEResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetOfficerList">
+        <s:complexType />
+      </s:element>
+      <s:element name="GetOfficerListResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetOfficerListResult" type="tns:ArrayOfOfficerInfo" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfOfficerInfo">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="OfficerInfo" nillable="true" type="tns:OfficerInfo" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="OfficerInfo">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="OfficerName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="OfficerID" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="GetOfficerActivity">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="RangeStartDate" type="s:dateTime" />
+            <s:element minOccurs="1" maxOccurs="1" name="RangeEndDate" type="s:dateTime" />
+            <s:element minOccurs="0" maxOccurs="1" name="OfficerID" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetOfficerActivityResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetOfficerActivityResult" type="tns:ArrayOfOFFICER" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfOFFICER">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="OFFICER" nillable="true">
+            <s:complexType>
+              <s:sequence>
+                <s:element minOccurs="0" maxOccurs="unbounded" form="unqualified" name="ACTIVITY">
+                  <s:complexType>
+                    <s:sequence>
+                      <s:element minOccurs="1" maxOccurs="1" form="unqualified" name="ISSUE_DATE" type="s:date" />
+                      <s:element minOccurs="0" maxOccurs="1" form="unqualified" name="START" type="s:time" />
+                      <s:element minOccurs="1" maxOccurs="1" form="unqualified" name="END" type="s:time" />
+                      <s:element minOccurs="1" maxOccurs="1" form="unqualified" name="ELAPSED" type="s:time" />
+                      <s:element minOccurs="0" maxOccurs="1" form="unqualified" name="OFFICER_NAME" type="s:string" />
+                      <s:element minOccurs="0" maxOccurs="1" form="unqualified" name="OFFICER_ID" type="s:int" />
+                      <s:element minOccurs="0" maxOccurs="1" form="unqualified" name="PRIMARYACTIVITY" type="s:string" />
+                      <s:element minOccurs="0" maxOccurs="1" form="unqualified" name="ADDRESS" type="s:string" />
+                      <s:element minOccurs="1" maxOccurs="1" form="unqualified" name="LAT" type="s:decimal" />
+                      <s:element minOccurs="1" maxOccurs="1" form="unqualified" name="LNG" type="s:decimal" />
+                    </s:sequence>
+                  </s:complexType>
+                </s:element>
+              </s:sequence>
+              <s:attribute name="full_name" type="s:string" />
+            </s:complexType>
+          </s:element>
+        </s:sequence>
+      </s:complexType>
+      <s:element name="GetOfficerLocations">
+        <s:complexType />
+      </s:element>
+      <s:element name="GetOfficerLocationsResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetOfficerLocationsResult" type="tns:ArrayOfOFFICER_ASSETCurrentLocation" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfOFFICER_ASSETCurrentLocation">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="OFFICER_ASSETCurrentLocation" nillable="true">
+            <s:complexType>
+              <s:sequence>
+                <s:element minOccurs="0" maxOccurs="1" form="unqualified" name="DeviceId" type="s:string" />
+                <s:element minOccurs="0" maxOccurs="1" form="unqualified" name="OfficerId" type="s:integer" />
+                <s:element minOccurs="0" maxOccurs="1" form="unqualified" name="OfficerName" type="s:string" />
+                <s:element minOccurs="1" maxOccurs="1" form="unqualified" name="LAT" type="s:decimal" />
+                <s:element minOccurs="1" maxOccurs="1" form="unqualified" name="LNG" type="s:decimal" />
+              </s:sequence>
+            </s:complexType>
+          </s:element>
+        </s:sequence>
+      </s:complexType>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="GetVersionSoapIn">
+    <wsdl:part name="parameters" element="tns:GetVersion" />
+  </wsdl:message>
+  <wsdl:message name="GetVersionSoapOut">
+    <wsdl:part name="parameters" element="tns:GetVersionResponse" />
+  </wsdl:message>
+  <wsdl:message name="StartEnforcementSessionSoapIn">
+    <wsdl:part name="parameters" element="tns:StartEnforcementSession" />
+  </wsdl:message>
+  <wsdl:message name="StartEnforcementSessionSoapOut">
+    <wsdl:part name="parameters" element="tns:StartEnforcementSessionResponse" />
+  </wsdl:message>
+  <wsdl:message name="StopEnforcementSessionSoapIn">
+    <wsdl:part name="parameters" element="tns:StopEnforcementSession" />
+  </wsdl:message>
+  <wsdl:message name="StopEnforcementSessionSoapOut">
+    <wsdl:part name="parameters" element="tns:StopEnforcementSessionResponse" />
+  </wsdl:message>
+  <wsdl:message name="ConvertLegacyParkeonLogFilesSoapIn">
+    <wsdl:part name="parameters" element="tns:ConvertLegacyParkeonLogFiles" />
+  </wsdl:message>
+  <wsdl:message name="ConvertLegacyParkeonLogFilesSoapOut">
+    <wsdl:part name="parameters" element="tns:ConvertLegacyParkeonLogFilesResponse" />
+  </wsdl:message>
+  <wsdl:message name="Parkeon_GetDatasetXML_RealTimeStatisticsSoapIn">
+    <wsdl:part name="parameters" element="tns:Parkeon_GetDatasetXML_RealTimeStatistics" />
+  </wsdl:message>
+  <wsdl:message name="Parkeon_GetDatasetXML_RealTimeStatisticsSoapOut">
+    <wsdl:part name="parameters" element="tns:Parkeon_GetDatasetXML_RealTimeStatisticsResponse" />
+  </wsdl:message>
+  <wsdl:message name="Parkeon_GetDataSetForKnownHistoricalReportSoapIn">
+    <wsdl:part name="parameters" element="tns:Parkeon_GetDataSetForKnownHistoricalReport" />
+  </wsdl:message>
+  <wsdl:message name="Parkeon_GetDataSetForKnownHistoricalReportSoapOut">
+    <wsdl:part name="parameters" element="tns:Parkeon_GetDataSetForKnownHistoricalReportResponse" />
+  </wsdl:message>
+  <wsdl:message name="Parkeon_GetActivityBlobSoapIn">
+    <wsdl:part name="parameters" element="tns:Parkeon_GetActivityBlob" />
+  </wsdl:message>
+  <wsdl:message name="Parkeon_GetActivityBlobSoapOut">
+    <wsdl:part name="parameters" element="tns:Parkeon_GetActivityBlobResponse" />
+  </wsdl:message>
+  <wsdl:message name="Parkeon_GetActivityDetailBlobSoapIn">
+    <wsdl:part name="parameters" element="tns:Parkeon_GetActivityDetailBlob" />
+  </wsdl:message>
+  <wsdl:message name="Parkeon_GetActivityDetailBlobSoapOut">
+    <wsdl:part name="parameters" element="tns:Parkeon_GetActivityDetailBlobResponse" />
+  </wsdl:message>
+  <wsdl:message name="CompressStringSoapIn">
+    <wsdl:part name="parameters" element="tns:CompressString" />
+  </wsdl:message>
+  <wsdl:message name="CompressStringSoapOut">
+    <wsdl:part name="parameters" element="tns:CompressStringResponse" />
+  </wsdl:message>
+  <wsdl:message name="DecompressStringSoapIn">
+    <wsdl:part name="parameters" element="tns:DecompressString" />
+  </wsdl:message>
+  <wsdl:message name="DecompressStringSoapOut">
+    <wsdl:part name="parameters" element="tns:DecompressStringResponse" />
+  </wsdl:message>
+  <wsdl:message name="PAMClusterStatusRequestSoapIn">
+    <wsdl:part name="parameters" element="tns:PAMClusterStatusRequest" />
+  </wsdl:message>
+  <wsdl:message name="PAMClusterStatusRequestSoapOut">
+    <wsdl:part name="parameters" element="tns:PAMClusterStatusRequestResponse" />
+  </wsdl:message>
+  <wsdl:message name="PAMorDPTMeterStatusRequestSoapIn">
+    <wsdl:part name="parameters" element="tns:PAMorDPTMeterStatusRequest" />
+  </wsdl:message>
+  <wsdl:message name="PAMorDPTMeterStatusRequestSoapOut">
+    <wsdl:part name="parameters" element="tns:PAMorDPTMeterStatusRequestResponse" />
+  </wsdl:message>
+  <wsdl:message name="MeterStatusRequestSoapIn">
+    <wsdl:part name="parameters" element="tns:MeterStatusRequest" />
+  </wsdl:message>
+  <wsdl:message name="MeterStatusRequestSoapOut">
+    <wsdl:part name="parameters" element="tns:MeterStatusRequestResponse" />
+  </wsdl:message>
+  <wsdl:message name="SmallXMLMeterStatusRequestSoapIn">
+    <wsdl:part name="parameters" element="tns:SmallXMLMeterStatusRequest" />
+  </wsdl:message>
+  <wsdl:message name="SmallXMLMeterStatusRequestSoapOut">
+    <wsdl:part name="parameters" element="tns:SmallXMLMeterStatusRequestResponse" />
+  </wsdl:message>
+  <wsdl:message name="SmallXMLMeterStatusRequest_MultiVendorSoapIn">
+    <wsdl:part name="parameters" element="tns:SmallXMLMeterStatusRequest_MultiVendor" />
+  </wsdl:message>
+  <wsdl:message name="SmallXMLMeterStatusRequest_MultiVendorSoapOut">
+    <wsdl:part name="parameters" element="tns:SmallXMLMeterStatusRequest_MultiVendorResponse" />
+  </wsdl:message>
+  <wsdl:message name="SearchHotSheetSoapIn">
+    <wsdl:part name="parameters" element="tns:SearchHotSheet" />
+  </wsdl:message>
+  <wsdl:message name="SearchHotSheetSoapOut">
+    <wsdl:part name="parameters" element="tns:SearchHotSheetResponse" />
+  </wsdl:message>
+  <wsdl:message name="SearchHotSheetLOCALSoapIn">
+    <wsdl:part name="parameters" element="tns:SearchHotSheetLOCAL" />
+  </wsdl:message>
+  <wsdl:message name="SearchHotSheetLOCALSoapOut">
+    <wsdl:part name="parameters" element="tns:SearchHotSheetLOCALResponse" />
+  </wsdl:message>
+  <wsdl:message name="CreateWirelessSessionSoapIn">
+    <wsdl:part name="parameters" element="tns:CreateWirelessSession" />
+  </wsdl:message>
+  <wsdl:message name="CreateWirelessSessionSoapOut">
+    <wsdl:part name="parameters" element="tns:CreateWirelessSessionResponse" />
+  </wsdl:message>
+  <wsdl:message name="CreateWirelessSessionLOCALSoapIn">
+    <wsdl:part name="parameters" element="tns:CreateWirelessSessionLOCAL" />
+  </wsdl:message>
+  <wsdl:message name="CreateWirelessSessionLOCALSoapOut">
+    <wsdl:part name="parameters" element="tns:CreateWirelessSessionLOCALResponse" />
+  </wsdl:message>
+  <wsdl:message name="PutWirelessFileSoapIn">
+    <wsdl:part name="parameters" element="tns:PutWirelessFile" />
+  </wsdl:message>
+  <wsdl:message name="PutWirelessFileSoapOut">
+    <wsdl:part name="parameters" element="tns:PutWirelessFileResponse" />
+  </wsdl:message>
+  <wsdl:message name="PutWirelessFileLOCALSoapIn">
+    <wsdl:part name="parameters" element="tns:PutWirelessFileLOCAL" />
+  </wsdl:message>
+  <wsdl:message name="PutWirelessFileLOCALSoapOut">
+    <wsdl:part name="parameters" element="tns:PutWirelessFileLOCALResponse" />
+  </wsdl:message>
+  <wsdl:message name="EndWirelessSessionSoapIn">
+    <wsdl:part name="parameters" element="tns:EndWirelessSession" />
+  </wsdl:message>
+  <wsdl:message name="EndWirelessSessionSoapOut">
+    <wsdl:part name="parameters" element="tns:EndWirelessSessionResponse" />
+  </wsdl:message>
+  <wsdl:message name="EndWirelessSessionLOCALSoapIn">
+    <wsdl:part name="parameters" element="tns:EndWirelessSessionLOCAL" />
+  </wsdl:message>
+  <wsdl:message name="EndWirelessSessionLOCALSoapOut">
+    <wsdl:part name="parameters" element="tns:EndWirelessSessionLOCALResponse" />
+  </wsdl:message>
+  <wsdl:message name="BackAtchaSoapIn">
+    <wsdl:part name="parameters" element="tns:BackAtcha" />
+  </wsdl:message>
+  <wsdl:message name="BackAtchaSoapOut">
+    <wsdl:part name="parameters" element="tns:BackAtchaResponse" />
+  </wsdl:message>
+  <wsdl:message name="WirelessLocationTestSoapIn">
+    <wsdl:part name="parameters" element="tns:WirelessLocationTest" />
+  </wsdl:message>
+  <wsdl:message name="WirelessLocationTestSoapOut">
+    <wsdl:part name="parameters" element="tns:WirelessLocationTestResponse" />
+  </wsdl:message>
+  <wsdl:message name="WirelessCoverageTestLogSoapIn">
+    <wsdl:part name="parameters" element="tns:WirelessCoverageTestLog" />
+  </wsdl:message>
+  <wsdl:message name="WirelessCoverageTestLogSoapOut">
+    <wsdl:part name="parameters" element="tns:WirelessCoverageTestLogResponse" />
+  </wsdl:message>
+  <wsdl:message name="LogCoverageTestEntrySoapIn">
+    <wsdl:part name="parameters" element="tns:LogCoverageTestEntry" />
+  </wsdl:message>
+  <wsdl:message name="LogCoverageTestEntrySoapOut">
+    <wsdl:part name="parameters" element="tns:LogCoverageTestEntryResponse" />
+  </wsdl:message>
+  <wsdl:message name="ImportRecordSoapIn">
+    <wsdl:part name="parameters" element="tns:ImportRecord" />
+  </wsdl:message>
+  <wsdl:message name="ImportRecordSoapOut">
+    <wsdl:part name="parameters" element="tns:ImportRecordResponse" />
+  </wsdl:message>
+  <wsdl:message name="ImportRecordLOCALSoapIn">
+    <wsdl:part name="parameters" element="tns:ImportRecordLOCAL" />
+  </wsdl:message>
+  <wsdl:message name="ImportRecordLOCALSoapOut">
+    <wsdl:part name="parameters" element="tns:ImportRecordLOCALResponse" />
+  </wsdl:message>
+  <wsdl:message name="PayByPhone_GetZoneStatus_LocalTestSoapIn">
+    <wsdl:part name="parameters" element="tns:PayByPhone_GetZoneStatus_LocalTest" />
+  </wsdl:message>
+  <wsdl:message name="PayByPhone_GetZoneStatus_LocalTestSoapOut">
+    <wsdl:part name="parameters" element="tns:PayByPhone_GetZoneStatus_LocalTestResponse" />
+  </wsdl:message>
+  <wsdl:message name="PayByPhone_GetZoneStatusSoapIn">
+    <wsdl:part name="parameters" element="tns:PayByPhone_GetZoneStatus" />
+  </wsdl:message>
+  <wsdl:message name="PayByPhone_GetZoneStatusSoapOut">
+    <wsdl:part name="parameters" element="tns:PayByPhone_GetZoneStatusResponse" />
+  </wsdl:message>
+  <wsdl:message name="PayByPhone_GetVehicleStatusSoapIn">
+    <wsdl:part name="parameters" element="tns:PayByPhone_GetVehicleStatus" />
+  </wsdl:message>
+  <wsdl:message name="PayByPhone_GetVehicleStatusSoapOut">
+    <wsdl:part name="parameters" element="tns:PayByPhone_GetVehicleStatusResponse" />
+  </wsdl:message>
+  <wsdl:message name="CloseOutCurrentUserFromDatabaseSoapIn">
+    <wsdl:part name="parameters" element="tns:CloseOutCurrentUserFromDatabase" />
+  </wsdl:message>
+  <wsdl:message name="CloseOutCurrentUserFromDatabaseSoapOut">
+    <wsdl:part name="parameters" element="tns:CloseOutCurrentUserFromDatabaseResponse" />
+  </wsdl:message>
+  <wsdl:message name="SyncSession_AuthenticateSoapIn">
+    <wsdl:part name="parameters" element="tns:SyncSession_Authenticate" />
+  </wsdl:message>
+  <wsdl:message name="SyncSession_AuthenticateSoapOut">
+    <wsdl:part name="parameters" element="tns:SyncSession_AuthenticateResponse" />
+  </wsdl:message>
+  <wsdl:message name="SyncSession_ClaimSerialNoSoapIn">
+    <wsdl:part name="parameters" element="tns:SyncSession_ClaimSerialNo" />
+  </wsdl:message>
+  <wsdl:message name="SyncSession_ClaimSerialNoSoapOut">
+    <wsdl:part name="parameters" element="tns:SyncSession_ClaimSerialNoResponse" />
+  </wsdl:message>
+  <wsdl:message name="SyncSession_ReleaseSerialNoSoapIn">
+    <wsdl:part name="parameters" element="tns:SyncSession_ReleaseSerialNo" />
+  </wsdl:message>
+  <wsdl:message name="SyncSession_ReleaseSerialNoSoapOut">
+    <wsdl:part name="parameters" element="tns:SyncSession_ReleaseSerialNoResponse" />
+  </wsdl:message>
+  <wsdl:message name="SyncSession_BeginSoapIn">
+    <wsdl:part name="parameters" element="tns:SyncSession_Begin" />
+  </wsdl:message>
+  <wsdl:message name="SyncSession_BeginSoapOut">
+    <wsdl:part name="parameters" element="tns:SyncSession_BeginResponse" />
+  </wsdl:message>
+  <wsdl:message name="CreateFileInCommSessionSoapIn">
+    <wsdl:part name="parameters" element="tns:CreateFileInCommSession" />
+  </wsdl:message>
+  <wsdl:message name="CreateFileInCommSessionSoapOut">
+    <wsdl:part name="parameters" element="tns:CreateFileInCommSessionResponse" />
+  </wsdl:message>
+  <wsdl:message name="ImportCommSessionDataSoapIn">
+    <wsdl:part name="parameters" element="tns:ImportCommSessionData" />
+  </wsdl:message>
+  <wsdl:message name="ImportCommSessionDataSoapOut">
+    <wsdl:part name="parameters" element="tns:ImportCommSessionDataResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetHHConfigFileSoapIn">
+    <wsdl:part name="parameters" element="tns:GetHHConfigFile" />
+  </wsdl:message>
+  <wsdl:message name="GetHHConfigFileSoapOut">
+    <wsdl:part name="parameters" element="tns:GetHHConfigFileResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetHHPlatformFileSoapIn">
+    <wsdl:part name="parameters" element="tns:GetHHPlatformFile" />
+  </wsdl:message>
+  <wsdl:message name="GetHHPlatformFileSoapOut">
+    <wsdl:part name="parameters" element="tns:GetHHPlatformFileResponse" />
+  </wsdl:message>
+  <wsdl:message name="RefreshCompositeFilesSoapIn">
+    <wsdl:part name="parameters" element="tns:RefreshCompositeFiles" />
+  </wsdl:message>
+  <wsdl:message name="RefreshCompositeFilesSoapOut">
+    <wsdl:part name="parameters" element="tns:RefreshCompositeFilesResponse" />
+  </wsdl:message>
+  <wsdl:message name="RefreshCompositeFiles2SoapIn">
+    <wsdl:part name="parameters" element="tns:RefreshCompositeFiles2" />
+  </wsdl:message>
+  <wsdl:message name="RefreshCompositeFiles2SoapOut">
+    <wsdl:part name="parameters" element="tns:RefreshCompositeFiles2Response" />
+  </wsdl:message>
+  <wsdl:message name="DownloadACompositeFileChunkSoapIn">
+    <wsdl:part name="parameters" element="tns:DownloadACompositeFileChunk" />
+  </wsdl:message>
+  <wsdl:message name="DownloadACompositeFileChunkSoapOut">
+    <wsdl:part name="parameters" element="tns:DownloadACompositeFileChunkResponse" />
+  </wsdl:message>
+  <wsdl:message name="GenerateHandheldUserStructFileSoapIn">
+    <wsdl:part name="parameters" element="tns:GenerateHandheldUserStructFile" />
+  </wsdl:message>
+  <wsdl:message name="GenerateHandheldUserStructFileSoapOut">
+    <wsdl:part name="parameters" element="tns:GenerateHandheldUserStructFileResponse" />
+  </wsdl:message>
+  <wsdl:message name="GenerateHandheldUserStructFile_ExSoapIn">
+    <wsdl:part name="parameters" element="tns:GenerateHandheldUserStructFile_Ex" />
+  </wsdl:message>
+  <wsdl:message name="GenerateHandheldUserStructFile_ExSoapOut">
+    <wsdl:part name="parameters" element="tns:GenerateHandheldUserStructFile_ExResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetNewUnitBooksSoapIn">
+    <wsdl:part name="parameters" element="tns:GetNewUnitBooks" />
+  </wsdl:message>
+  <wsdl:message name="GetNewUnitBooksSoapOut">
+    <wsdl:part name="parameters" element="tns:GetNewUnitBooksResponse" />
+  </wsdl:message>
+  <wsdl:message name="InsertCommLogIntoTableSoapIn">
+    <wsdl:part name="parameters" element="tns:InsertCommLogIntoTable" />
+  </wsdl:message>
+  <wsdl:message name="InsertCommLogIntoTableSoapOut">
+    <wsdl:part name="parameters" element="tns:InsertCommLogIntoTableResponse" />
+  </wsdl:message>
+  <wsdl:message name="UploadAutoVuDataSoapIn">
+    <wsdl:part name="parameters" element="tns:UploadAutoVuData" />
+  </wsdl:message>
+  <wsdl:message name="UploadAutoVuDataSoapOut">
+    <wsdl:part name="parameters" element="tns:UploadAutoVuDataResponse" />
+  </wsdl:message>
+  <wsdl:message name="AcknowledgeProcessedDuncanAutoVuHitSoapIn">
+    <wsdl:part name="parameters" element="tns:AcknowledgeProcessedDuncanAutoVuHit" />
+  </wsdl:message>
+  <wsdl:message name="AcknowledgeProcessedDuncanAutoVuHitSoapOut">
+    <wsdl:part name="parameters" element="tns:AcknowledgeProcessedDuncanAutoVuHitResponse" />
+  </wsdl:message>
+  <wsdl:message name="DownloadDuncanAutoVuHitsSoapIn">
+    <wsdl:part name="parameters" element="tns:DownloadDuncanAutoVuHits" />
+  </wsdl:message>
+  <wsdl:message name="DownloadDuncanAutoVuHitsSoapOut">
+    <wsdl:part name="parameters" element="tns:DownloadDuncanAutoVuHitsResponse" />
+  </wsdl:message>
+  <wsdl:message name="DownloadDuncanAutoVuHitsCompressedSoapIn">
+    <wsdl:part name="parameters" element="tns:DownloadDuncanAutoVuHitsCompressed" />
+  </wsdl:message>
+  <wsdl:message name="DownloadDuncanAutoVuHitsCompressedSoapOut">
+    <wsdl:part name="parameters" element="tns:DownloadDuncanAutoVuHitsCompressedResponse" />
+  </wsdl:message>
+  <wsdl:message name="DownloadDuncanAutoVuHitSoapIn">
+    <wsdl:part name="parameters" element="tns:DownloadDuncanAutoVuHit" />
+  </wsdl:message>
+  <wsdl:message name="DownloadDuncanAutoVuHitSoapOut">
+    <wsdl:part name="parameters" element="tns:DownloadDuncanAutoVuHitResponse" />
+  </wsdl:message>
+  <wsdl:message name="DownloadNextDuncanAutoVuHitSoapIn">
+    <wsdl:part name="parameters" element="tns:DownloadNextDuncanAutoVuHit" />
+  </wsdl:message>
+  <wsdl:message name="DownloadNextDuncanAutoVuHitSoapOut">
+    <wsdl:part name="parameters" element="tns:DownloadNextDuncanAutoVuHitResponse" />
+  </wsdl:message>
+  <wsdl:message name="DownloadNextDuncanAutoVuHit_SAMPLESoapIn">
+    <wsdl:part name="parameters" element="tns:DownloadNextDuncanAutoVuHit_SAMPLE" />
+  </wsdl:message>
+  <wsdl:message name="DownloadNextDuncanAutoVuHit_SAMPLESoapOut">
+    <wsdl:part name="parameters" element="tns:DownloadNextDuncanAutoVuHit_SAMPLEResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetOfficerListSoapIn">
+    <wsdl:part name="parameters" element="tns:GetOfficerList" />
+  </wsdl:message>
+  <wsdl:message name="GetOfficerListSoapOut">
+    <wsdl:part name="parameters" element="tns:GetOfficerListResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetOfficerActivitySoapIn">
+    <wsdl:part name="parameters" element="tns:GetOfficerActivity" />
+  </wsdl:message>
+  <wsdl:message name="GetOfficerActivitySoapOut">
+    <wsdl:part name="parameters" element="tns:GetOfficerActivityResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetOfficerLocationsSoapIn">
+    <wsdl:part name="parameters" element="tns:GetOfficerLocations" />
+  </wsdl:message>
+  <wsdl:message name="GetOfficerLocationsSoapOut">
+    <wsdl:part name="parameters" element="tns:GetOfficerLocationsResponse" />
+  </wsdl:message>
+  <wsdl:portType name="AutoISSUEPublicServiceSoap">
+    <wsdl:operation name="GetVersion">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Returns a version number string for the web service.</wsdl:documentation>
+      <wsdl:input message="tns:GetVersionSoapIn" />
+      <wsdl:output message="tns:GetVersionSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="StartEnforcementSession">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Starts an enforcement session for a Parkeon Control Area. DuncanClusterID is expected to be of the form {ParkID}|{AreaID}</wsdl:documentation>
+      <wsdl:input message="tns:StartEnforcementSessionSoapIn" />
+      <wsdl:output message="tns:StartEnforcementSessionSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="StopEnforcementSession">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Stops a Parkeon enforcement session for a ParkeonSessionID that was obtained from StartEnforcementSession method.
+</wsdl:documentation>
+      <wsdl:input message="tns:StopEnforcementSessionSoapIn" />
+      <wsdl:output message="tns:StopEnforcementSessionSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ConvertLegacyParkeonLogFiles">
+      <wsdl:input message="tns:ConvertLegacyParkeonLogFilesSoapIn" />
+      <wsdl:output message="tns:ConvertLegacyParkeonLogFilesSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Parkeon_GetDatasetXML_RealTimeStatistics">
+      <wsdl:input message="tns:Parkeon_GetDatasetXML_RealTimeStatisticsSoapIn" />
+      <wsdl:output message="tns:Parkeon_GetDatasetXML_RealTimeStatisticsSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Parkeon_GetDataSetForKnownHistoricalReport">
+      <wsdl:input message="tns:Parkeon_GetDataSetForKnownHistoricalReportSoapIn" />
+      <wsdl:output message="tns:Parkeon_GetDataSetForKnownHistoricalReportSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Parkeon_GetActivityBlob">
+      <wsdl:input message="tns:Parkeon_GetActivityBlobSoapIn" />
+      <wsdl:output message="tns:Parkeon_GetActivityBlobSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Parkeon_GetActivityDetailBlob">
+      <wsdl:input message="tns:Parkeon_GetActivityDetailBlobSoapIn" />
+      <wsdl:output message="tns:Parkeon_GetActivityDetailBlobSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="CompressString">
+      <wsdl:input message="tns:CompressStringSoapIn" />
+      <wsdl:output message="tns:CompressStringSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="DecompressString">
+      <wsdl:input message="tns:DecompressStringSoapIn" />
+      <wsdl:output message="tns:DecompressStringSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="PAMClusterStatusRequest">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Performs a Cluster Status Request on the PAM server and returns the data. (Original version) 
+</wsdl:documentation>
+      <wsdl:input message="tns:PAMClusterStatusRequestSoapIn" />
+      <wsdl:output message="tns:PAMClusterStatusRequestSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="PAMorDPTMeterStatusRequest">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Performs a Cluster Status Request against PAM or DPT server and returns the data. (1st Update)
+</wsdl:documentation>
+      <wsdl:input message="tns:PAMorDPTMeterStatusRequestSoapIn" />
+      <wsdl:output message="tns:PAMorDPTMeterStatusRequestSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="MeterStatusRequest">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Performs a Cluster Status Request against space status service and returns the data. (2nd Update)
+</wsdl:documentation>
+      <wsdl:input message="tns:MeterStatusRequestSoapIn" />
+      <wsdl:output message="tns:MeterStatusRequestSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SmallXMLMeterStatusRequest">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Performs a Cluster Status Request against space status service and returns the data with a smaller XML payload. (3rd Update)
+</wsdl:documentation>
+      <wsdl:input message="tns:SmallXMLMeterStatusRequestSoapIn" />
+      <wsdl:output message="tns:SmallXMLMeterStatusRequestSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SmallXMLMeterStatusRequest_MultiVendor">
+      <wsdl:input message="tns:SmallXMLMeterStatusRequest_MultiVendorSoapIn" />
+      <wsdl:output message="tns:SmallXMLMeterStatusRequest_MultiVendorSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SearchHotSheet">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Searches composite hotsheet file of a given structure for records matching the passed search parameters.
+</wsdl:documentation>
+      <wsdl:input message="tns:SearchHotSheetSoapIn" />
+      <wsdl:output message="tns:SearchHotSheetSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SearchHotSheetLOCAL">
+      <wsdl:input message="tns:SearchHotSheetLOCALSoapIn" />
+      <wsdl:output message="tns:SearchHotSheetLOCALSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="CreateWirelessSession">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Creates a new folder on the server based on the passed handheld serial number. Returns name of folder that was created (but not the full path)</wsdl:documentation>
+      <wsdl:input message="tns:CreateWirelessSessionSoapIn" />
+      <wsdl:output message="tns:CreateWirelessSessionSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="CreateWirelessSessionLOCAL">
+      <wsdl:input message="tns:CreateWirelessSessionLOCALSoapIn" />
+      <wsdl:output message="tns:CreateWirelessSessionLOCALSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="PutWirelessFile">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Creates new file in iSessionFolder on the server. iFileBytes represents the data that will be written to file, and iFileTimeStamp will be set as the file's creation time.</wsdl:documentation>
+      <wsdl:input message="tns:PutWirelessFileSoapIn" />
+      <wsdl:output message="tns:PutWirelessFileSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="PutWirelessFileLOCAL">
+      <wsdl:input message="tns:PutWirelessFileLOCALSoapIn" />
+      <wsdl:output message="tns:PutWirelessFileLOCALSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="EndWirelessSession">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Imports .DAT files in wireless session folder</wsdl:documentation>
+      <wsdl:input message="tns:EndWirelessSessionSoapIn" />
+      <wsdl:output message="tns:EndWirelessSessionSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="EndWirelessSessionLOCAL">
+      <wsdl:input message="tns:EndWirelessSessionLOCALSoapIn" />
+      <wsdl:output message="tns:EndWirelessSessionLOCALSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="BackAtcha">
+      <wsdl:input message="tns:BackAtchaSoapIn" />
+      <wsdl:output message="tns:BackAtchaSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="WirelessLocationTest">
+      <wsdl:input message="tns:WirelessLocationTestSoapIn" />
+      <wsdl:output message="tns:WirelessLocationTestSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="WirelessCoverageTestLog">
+      <wsdl:input message="tns:WirelessCoverageTestLogSoapIn" />
+      <wsdl:output message="tns:WirelessCoverageTestLogSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="LogCoverageTestEntry">
+      <wsdl:input message="tns:LogCoverageTestEntrySoapIn" />
+      <wsdl:output message="tns:LogCoverageTestEntrySoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ImportRecord">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Imports data for a master or child structure. 
+</wsdl:documentation>
+      <wsdl:input message="tns:ImportRecordSoapIn" />
+      <wsdl:output message="tns:ImportRecordSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ImportRecordLOCAL">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Imports data for a master or child structure. 
+</wsdl:documentation>
+      <wsdl:input message="tns:ImportRecordLOCALSoapIn" />
+      <wsdl:output message="tns:ImportRecordLOCALSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="PayByPhone_GetZoneStatus_LocalTest">
+      <wsdl:input message="tns:PayByPhone_GetZoneStatus_LocalTestSoapIn" />
+      <wsdl:output message="tns:PayByPhone_GetZoneStatus_LocalTestSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="PayByPhone_GetZoneStatus">
+      <wsdl:input message="tns:PayByPhone_GetZoneStatusSoapIn" />
+      <wsdl:output message="tns:PayByPhone_GetZoneStatusSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="PayByPhone_GetVehicleStatus">
+      <wsdl:input message="tns:PayByPhone_GetVehicleStatusSoapIn" />
+      <wsdl:output message="tns:PayByPhone_GetVehicleStatusSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="CloseOutCurrentUserFromDatabase">
+      <wsdl:input message="tns:CloseOutCurrentUserFromDatabaseSoapIn" />
+      <wsdl:output message="tns:CloseOutCurrentUserFromDatabaseSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SyncSession_Authenticate">
+      <wsdl:input message="tns:SyncSession_AuthenticateSoapIn" />
+      <wsdl:output message="tns:SyncSession_AuthenticateSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SyncSession_ClaimSerialNo">
+      <wsdl:input message="tns:SyncSession_ClaimSerialNoSoapIn" />
+      <wsdl:output message="tns:SyncSession_ClaimSerialNoSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SyncSession_ReleaseSerialNo">
+      <wsdl:input message="tns:SyncSession_ReleaseSerialNoSoapIn" />
+      <wsdl:output message="tns:SyncSession_ReleaseSerialNoSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SyncSession_Begin">
+      <wsdl:input message="tns:SyncSession_BeginSoapIn" />
+      <wsdl:output message="tns:SyncSession_BeginSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="CreateFileInCommSession">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Uploads a file to the host server.</wsdl:documentation>
+      <wsdl:input message="tns:CreateFileInCommSessionSoapIn" />
+      <wsdl:output message="tns:CreateFileInCommSessionSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ImportCommSessionData">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Imports .DAT files downloaded from handhelds</wsdl:documentation>
+      <wsdl:input message="tns:ImportCommSessionDataSoapIn" />
+      <wsdl:output message="tns:ImportCommSessionDataSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetHHConfigFile">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Returns contents of handheld configuration file specified by filename</wsdl:documentation>
+      <wsdl:input message="tns:GetHHConfigFileSoapIn" />
+      <wsdl:output message="tns:GetHHConfigFileSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetHHPlatformFile">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Returns contents of handheld platform file specified by filename</wsdl:documentation>
+      <wsdl:input message="tns:GetHHPlatformFileSoapIn" />
+      <wsdl:output message="tns:GetHHPlatformFileSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="RefreshCompositeFiles">
+      <wsdl:input message="tns:RefreshCompositeFilesSoapIn" />
+      <wsdl:output message="tns:RefreshCompositeFilesSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="RefreshCompositeFiles2">
+      <wsdl:input message="tns:RefreshCompositeFiles2SoapIn" />
+      <wsdl:output message="tns:RefreshCompositeFiles2SoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="DownloadACompositeFileChunk">
+      <wsdl:input message="tns:DownloadACompositeFileChunkSoapIn" />
+      <wsdl:output message="tns:DownloadACompositeFileChunkSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GenerateHandheldUserStructFile">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Retrieves the USERSTRUCT list from the host</wsdl:documentation>
+      <wsdl:input message="tns:GenerateHandheldUserStructFileSoapIn" />
+      <wsdl:output message="tns:GenerateHandheldUserStructFileSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GenerateHandheldUserStructFile_Ex">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Retrieves the USERSTRUCT list and filename from the host (good for TCP/IP synchs</wsdl:documentation>
+      <wsdl:input message="tns:GenerateHandheldUserStructFile_ExSoapIn" />
+      <wsdl:output message="tns:GenerateHandheldUserStructFile_ExSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetNewUnitBooks">
+      <wsdl:input message="tns:GetNewUnitBooksSoapIn" />
+      <wsdl:output message="tns:GetNewUnitBooksSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="InsertCommLogIntoTable">
+      <wsdl:input message="tns:InsertCommLogIntoTableSoapIn" />
+      <wsdl:output message="tns:InsertCommLogIntoTableSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="UploadAutoVuData">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Used by Duncan AutoVu Poller to upload AutoVu information from Genetec AutoVu Patroller</wsdl:documentation>
+      <wsdl:input message="tns:UploadAutoVuDataSoapIn" />
+      <wsdl:output message="tns:UploadAutoVuDataSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="AcknowledgeProcessedDuncanAutoVuHit">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Removes the AutoVu hit from server so it is not sent to other handhelds. This should be called after writing a ticket for a particular AutoVu hit.</wsdl:documentation>
+      <wsdl:input message="tns:AcknowledgeProcessedDuncanAutoVuHitSoapIn" />
+      <wsdl:output message="tns:AcknowledgeProcessedDuncanAutoVuHitSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="DownloadDuncanAutoVuHits">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Returns an array of DuncanAutoVuHit objects (serialized as a string) filtered to a particular zone.
+iZoneFilter Parameter should be the name of the desired zone, or 'ALL' to return all AutoVu hits. 
+iImageEncoding Parameter accepts values 'NONE', 'BASE64', and 'HEX'. Typically you should pass 'NONE' so that images are not transmitted in the response. You can receive the images for an individual AutoVu hit by calling the DownloadDuncanAutoVuHit() method.</wsdl:documentation>
+      <wsdl:input message="tns:DownloadDuncanAutoVuHitsSoapIn" />
+      <wsdl:output message="tns:DownloadDuncanAutoVuHitsSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="DownloadDuncanAutoVuHitsCompressed">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Returns a array of DuncanAutoVuHit objects (compressed) filtered to a particular zone.</wsdl:documentation>
+      <wsdl:input message="tns:DownloadDuncanAutoVuHitsCompressedSoapIn" />
+      <wsdl:output message="tns:DownloadDuncanAutoVuHitsCompressedSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="DownloadDuncanAutoVuHit">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Returns DuncanAutoVuHit hit object (serialized as a string) matching the passed iHitID.
+iImageEncoding Parameter accepts values 'NONE', 'BASE64', and 'HEX'. Typically you should pass 'BASE64' for compact transmission of image data.</wsdl:documentation>
+      <wsdl:input message="tns:DownloadDuncanAutoVuHitSoapIn" />
+      <wsdl:output message="tns:DownloadDuncanAutoVuHitSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="DownloadNextDuncanAutoVuHit">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">For Demo purposes only. Will be deprecated!</wsdl:documentation>
+      <wsdl:input message="tns:DownloadNextDuncanAutoVuHitSoapIn" />
+      <wsdl:output message="tns:DownloadNextDuncanAutoVuHitSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="DownloadNextDuncanAutoVuHit_SAMPLE">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">For Testing only. Will be deprecated!</wsdl:documentation>
+      <wsdl:input message="tns:DownloadNextDuncanAutoVuHit_SAMPLESoapIn" />
+      <wsdl:output message="tns:DownloadNextDuncanAutoVuHit_SAMPLESoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetOfficerList">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Returns an array of OfficerInfo objects listing officer names and IDs that have access rights to issue tickets on handhelds</wsdl:documentation>
+      <wsdl:input message="tns:GetOfficerListSoapIn" />
+      <wsdl:output message="tns:GetOfficerListSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetOfficerActivity">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Returns an array of OFFICER objects containing activity information for the given date range. If an OfficerID is passed, the result will be filtered to that officer. If the OfficerID is NULL or blank, then all officers within the date range will be returned.</wsdl:documentation>
+      <wsdl:input message="tns:GetOfficerActivitySoapIn" />
+      <wsdl:output message="tns:GetOfficerActivitySoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetOfficerLocations">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Returns current asset locations</wsdl:documentation>
+      <wsdl:input message="tns:GetOfficerLocationsSoapIn" />
+      <wsdl:output message="tns:GetOfficerLocationsSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="AutoISSUEPublicServiceSoap" type="tns:AutoISSUEPublicServiceSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="GetVersion">
+      <soap:operation soapAction="http://www.autocite.com/autoissue_dotnet/autoissuepublicservice/GetVersion" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="StartEnforcementSession">
+      <soap:operation soapAction="http://www.autocite.com/autoissue_dotnet/autoissuepublicservice/StartEnforcementSession" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="StopEnforcementSession">
+      <soap:operation soapAction="http://www.autocite.com/autoissue_dotnet/autoissuepublicservice/StopEnforcementSession" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ConvertLegacyParkeonLogFiles">
+      <soap:operation soapAction="http://www.autocite.com/autoissue_dotnet/autoissuepublicservice/ConvertLegacyParkeonLogFiles" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Parkeon_GetDatasetXML_RealTimeStatistics">
+      <soap:operation soapAction="http://www.autocite.com/autoissue_dotnet/autoissuepublicservice/Parkeon_GetDatasetXML_RealTimeStatistics" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Parkeon_GetDataSetForKnownHistoricalReport">
+      <soap:operation soapAction="http://www.autocite.com/autoissue_dotnet/autoissuepublicservice/Parkeon_GetDataSetForKnownHistoricalReport" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Parkeon_GetActivityBlob">
+      <soap:operation soapAction="http://www.autocite.com/autoissue_dotnet/autoissuepublicservice/Parkeon_GetActivityBlob" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Parkeon_GetActivityDetailBlob">
+      <soap:operation soapAction="http://www.autocite.com/autoissue_dotnet/autoissuepublicservice/Parkeon_GetActivityDetailBlob" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CompressString">
+      <soap:operation soapAction="http://www.autocite.com/autoissue_dotnet/autoissuepublicservice/CompressString" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DecompressString">
+      <soap:operation soapAction="http://www.autocite.com/autoissue_dotnet/autoissuepublicservice/DecompressString" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="PAMClusterStatusRequest">
+      <soap:operation soapAction="http://www.autocite.com/autoissue_dotnet/autoissuepublicservice/PAMClusterStatusRequest" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="PAMorDPTMeterStatusRequest">
+      <soap:operation soapAction="http://www.autocite.com/autoissue_dotnet/autoissuepublicservice/PAMorDPTMeterStatusRequest" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="MeterStatusRequest">
+      <soap:operation soapAction="http://www.autocite.com/autoissue_dotnet/autoissuepublicservice/MeterStatusRequest" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SmallXMLMeterStatusRequest">
+      <soap:operation soapAction="http://www.autocite.com/autoissue_dotnet/autoissuepublicservice/SmallXMLMeterStatusRequest" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SmallXMLMeterStatusRequest_MultiVendor">
+      <soap:operation soapAction="http://www.autocite.com/autoissue_dotnet/autoissuepublicservice/SmallXMLMeterStatusRequest_MultiVendor" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SearchHotSheet">
+      <soap:operation soapAction="http://www.autocite.com/autoissue_dotnet/autoissuepublicservice/SearchHotSheet" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SearchHotSheetLOCAL">
+      <soap:operation soapAction="http://www.autocite.com/autoissue_dotnet/autoissuepublicservice/SearchHotSheetLOCAL" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CreateWirelessSession">
+      <soap:operation soapAction="http://www.autocite.com/autoissue_dotnet/autoissuepublicservice/CreateWirelessSession" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CreateWirelessSessionLOCAL">
+      <soap:operation soapAction="http://www.autocite.com/autoissue_dotnet/autoissuepublicservice/CreateWirelessSessionLOCAL" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="PutWirelessFile">
+      <soap:operation soapAction="http://www.autocite.com/autoissue_dotnet/autoissuepublicservice/PutWirelessFile" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="PutWirelessFileLOCAL">
+      <soap:operation soapAction="http://www.autocite.com/autoissue_dotnet/autoissuepublicservice/PutWirelessFileLOCAL" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="EndWirelessSession">
+      <soap:operation soapAction="http://www.autocite.com/autoissue_dotnet/autoissuepublicservice/EndWirelessSession" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="EndWirelessSessionLOCAL">
+      <soap:operation soapAction="http://www.autocite.com/autoissue_dotnet/autoissuepublicservice/EndWirelessSessionLOCAL" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="BackAtcha">
+      <soap:operation soapAction="http://www.autocite.com/autoissue_dotnet/autoissuepublicservice/BackAtcha" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="WirelessLocationTest">
+      <soap:operation soapAction="http://www.autocite.com/autoissue_dotnet/autoissuepublicservice/WirelessLocationTest" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="WirelessCoverageTestLog">
+      <soap:operation soapAction="http://www.autocite.com/autoissue_dotnet/autoissuepublicservice/WirelessCoverageTestLog" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="LogCoverageTestEntry">
+      <soap:operation soapAction="http://www.autocite.com/autoissue_dotnet/autoissuepublicservice/LogCoverageTestEntry" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ImportRecord">
+      <soap:operation soapAction="http://www.autocite.com/autoissue_dotnet/autoissuepublicservice/ImportRecord" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ImportRecordLOCAL">
+      <soap:operation soapAction="http://www.autocite.com/autoissue_dotnet/autoissuepublicservice/ImportRecordLOCAL" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="PayByPhone_GetZoneStatus_LocalTest">
+      <soap:operation soapAction="http://www.autocite.com/autoissue_dotnet/autoissuepublicservice/PayByPhone_GetZoneStatus_LocalTest" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="PayByPhone_GetZoneStatus">
+      <soap:operation soapAction="http://www.autocite.com/autoissue_dotnet/autoissuepublicservice/PayByPhone_GetZoneStatus" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="PayByPhone_GetVehicleStatus">
+      <soap:operation soapAction="http://www.autocite.com/autoissue_dotnet/autoissuepublicservice/PayByPhone_GetVehicleStatus" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CloseOutCurrentUserFromDatabase">
+      <soap:operation soapAction="http://www.autocite.com/autoissue_dotnet/autoissuepublicservice/CloseOutCurrentUserFromDatabase" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SyncSession_Authenticate">
+      <soap:operation soapAction="http://www.autocite.com/autoissue_dotnet/autoissuepublicservice/SyncSession_Authenticate" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SyncSession_ClaimSerialNo">
+      <soap:operation soapAction="http://www.autocite.com/autoissue_dotnet/autoissuepublicservice/SyncSession_ClaimSerialNo" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SyncSession_ReleaseSerialNo">
+      <soap:operation soapAction="http://www.autocite.com/autoissue_dotnet/autoissuepublicservice/SyncSession_ReleaseSerialNo" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SyncSession_Begin">
+      <soap:operation soapAction="http://www.autocite.com/autoissue_dotnet/autoissuepublicservice/SyncSession_Begin" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CreateFileInCommSession">
+      <soap:operation soapAction="http://www.autocite.com/autoissue_dotnet/autoissuepublicservice/CreateFileInCommSession" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ImportCommSessionData">
+      <soap:operation soapAction="http://www.autocite.com/autoissue_dotnet/autoissuepublicservice/ImportCommSessionData" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetHHConfigFile">
+      <soap:operation soapAction="http://www.autocite.com/autoissue_dotnet/autoissuepublicservice/GetHHConfigFile" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetHHPlatformFile">
+      <soap:operation soapAction="http://www.autocite.com/autoissue_dotnet/autoissuepublicservice/GetHHPlatformFile" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RefreshCompositeFiles">
+      <soap:operation soapAction="http://www.autocite.com/autoissue_dotnet/autoissuepublicservice/RefreshCompositeFiles" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RefreshCompositeFiles2">
+      <soap:operation soapAction="http://www.autocite.com/autoissue_dotnet/autoissuepublicservice/RefreshCompositeFiles2" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DownloadACompositeFileChunk">
+      <soap:operation soapAction="http://www.autocite.com/autoissue_dotnet/autoissuepublicservice/DownloadACompositeFileChunk" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GenerateHandheldUserStructFile">
+      <soap:operation soapAction="http://www.autocite.com/autoissue_dotnet/autoissuepublicservice/GenerateHandheldUserStructFile" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GenerateHandheldUserStructFile_Ex">
+      <soap:operation soapAction="http://www.autocite.com/autoissue_dotnet/autoissuepublicservice/GenerateHandheldUserStructFile_Ex" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetNewUnitBooks">
+      <soap:operation soapAction="http://www.autocite.com/autoissue_dotnet/autoissuepublicservice/GetNewUnitBooks" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="InsertCommLogIntoTable">
+      <soap:operation soapAction="http://www.autocite.com/autoissue_dotnet/autoissuepublicservice/InsertCommLogIntoTable" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UploadAutoVuData">
+      <soap:operation soapAction="http://www.autocite.com/autoissue_dotnet/autoissuepublicservice/UploadAutoVuData" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AcknowledgeProcessedDuncanAutoVuHit">
+      <soap:operation soapAction="http://www.autocite.com/autoissue_dotnet/autoissuepublicservice/AcknowledgeProcessedDuncanAutoVuHit" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DownloadDuncanAutoVuHits">
+      <soap:operation soapAction="http://www.autocite.com/autoissue_dotnet/autoissuepublicservice/DownloadDuncanAutoVuHits" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DownloadDuncanAutoVuHitsCompressed">
+      <soap:operation soapAction="http://www.autocite.com/autoissue_dotnet/autoissuepublicservice/DownloadDuncanAutoVuHitsCompressed" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DownloadDuncanAutoVuHit">
+      <soap:operation soapAction="http://www.autocite.com/autoissue_dotnet/autoissuepublicservice/DownloadDuncanAutoVuHit" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DownloadNextDuncanAutoVuHit">
+      <soap:operation soapAction="http://www.autocite.com/autoissue_dotnet/autoissuepublicservice/DownloadNextDuncanAutoVuHit" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DownloadNextDuncanAutoVuHit_SAMPLE">
+      <soap:operation soapAction="http://www.autocite.com/autoissue_dotnet/autoissuepublicservice/DownloadNextDuncanAutoVuHit_SAMPLE" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetOfficerList">
+      <soap:operation soapAction="http://www.autocite.com/autoissue_dotnet/autoissuepublicservice/GetOfficerList" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetOfficerActivity">
+      <soap:operation soapAction="http://www.autocite.com/autoissue_dotnet/autoissuepublicservice/GetOfficerActivity" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetOfficerLocations">
+      <soap:operation soapAction="http://www.autocite.com/autoissue_dotnet/autoissuepublicservice/GetOfficerLocations" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="AutoISSUEPublicServiceSoap12" type="tns:AutoISSUEPublicServiceSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="GetVersion">
+      <soap12:operation soapAction="http://www.autocite.com/autoissue_dotnet/autoissuepublicservice/GetVersion" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="StartEnforcementSession">
+      <soap12:operation soapAction="http://www.autocite.com/autoissue_dotnet/autoissuepublicservice/StartEnforcementSession" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="StopEnforcementSession">
+      <soap12:operation soapAction="http://www.autocite.com/autoissue_dotnet/autoissuepublicservice/StopEnforcementSession" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ConvertLegacyParkeonLogFiles">
+      <soap12:operation soapAction="http://www.autocite.com/autoissue_dotnet/autoissuepublicservice/ConvertLegacyParkeonLogFiles" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Parkeon_GetDatasetXML_RealTimeStatistics">
+      <soap12:operation soapAction="http://www.autocite.com/autoissue_dotnet/autoissuepublicservice/Parkeon_GetDatasetXML_RealTimeStatistics" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Parkeon_GetDataSetForKnownHistoricalReport">
+      <soap12:operation soapAction="http://www.autocite.com/autoissue_dotnet/autoissuepublicservice/Parkeon_GetDataSetForKnownHistoricalReport" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Parkeon_GetActivityBlob">
+      <soap12:operation soapAction="http://www.autocite.com/autoissue_dotnet/autoissuepublicservice/Parkeon_GetActivityBlob" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Parkeon_GetActivityDetailBlob">
+      <soap12:operation soapAction="http://www.autocite.com/autoissue_dotnet/autoissuepublicservice/Parkeon_GetActivityDetailBlob" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CompressString">
+      <soap12:operation soapAction="http://www.autocite.com/autoissue_dotnet/autoissuepublicservice/CompressString" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DecompressString">
+      <soap12:operation soapAction="http://www.autocite.com/autoissue_dotnet/autoissuepublicservice/DecompressString" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="PAMClusterStatusRequest">
+      <soap12:operation soapAction="http://www.autocite.com/autoissue_dotnet/autoissuepublicservice/PAMClusterStatusRequest" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="PAMorDPTMeterStatusRequest">
+      <soap12:operation soapAction="http://www.autocite.com/autoissue_dotnet/autoissuepublicservice/PAMorDPTMeterStatusRequest" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="MeterStatusRequest">
+      <soap12:operation soapAction="http://www.autocite.com/autoissue_dotnet/autoissuepublicservice/MeterStatusRequest" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SmallXMLMeterStatusRequest">
+      <soap12:operation soapAction="http://www.autocite.com/autoissue_dotnet/autoissuepublicservice/SmallXMLMeterStatusRequest" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SmallXMLMeterStatusRequest_MultiVendor">
+      <soap12:operation soapAction="http://www.autocite.com/autoissue_dotnet/autoissuepublicservice/SmallXMLMeterStatusRequest_MultiVendor" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SearchHotSheet">
+      <soap12:operation soapAction="http://www.autocite.com/autoissue_dotnet/autoissuepublicservice/SearchHotSheet" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SearchHotSheetLOCAL">
+      <soap12:operation soapAction="http://www.autocite.com/autoissue_dotnet/autoissuepublicservice/SearchHotSheetLOCAL" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CreateWirelessSession">
+      <soap12:operation soapAction="http://www.autocite.com/autoissue_dotnet/autoissuepublicservice/CreateWirelessSession" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CreateWirelessSessionLOCAL">
+      <soap12:operation soapAction="http://www.autocite.com/autoissue_dotnet/autoissuepublicservice/CreateWirelessSessionLOCAL" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="PutWirelessFile">
+      <soap12:operation soapAction="http://www.autocite.com/autoissue_dotnet/autoissuepublicservice/PutWirelessFile" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="PutWirelessFileLOCAL">
+      <soap12:operation soapAction="http://www.autocite.com/autoissue_dotnet/autoissuepublicservice/PutWirelessFileLOCAL" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="EndWirelessSession">
+      <soap12:operation soapAction="http://www.autocite.com/autoissue_dotnet/autoissuepublicservice/EndWirelessSession" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="EndWirelessSessionLOCAL">
+      <soap12:operation soapAction="http://www.autocite.com/autoissue_dotnet/autoissuepublicservice/EndWirelessSessionLOCAL" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="BackAtcha">
+      <soap12:operation soapAction="http://www.autocite.com/autoissue_dotnet/autoissuepublicservice/BackAtcha" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="WirelessLocationTest">
+      <soap12:operation soapAction="http://www.autocite.com/autoissue_dotnet/autoissuepublicservice/WirelessLocationTest" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="WirelessCoverageTestLog">
+      <soap12:operation soapAction="http://www.autocite.com/autoissue_dotnet/autoissuepublicservice/WirelessCoverageTestLog" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="LogCoverageTestEntry">
+      <soap12:operation soapAction="http://www.autocite.com/autoissue_dotnet/autoissuepublicservice/LogCoverageTestEntry" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ImportRecord">
+      <soap12:operation soapAction="http://www.autocite.com/autoissue_dotnet/autoissuepublicservice/ImportRecord" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ImportRecordLOCAL">
+      <soap12:operation soapAction="http://www.autocite.com/autoissue_dotnet/autoissuepublicservice/ImportRecordLOCAL" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="PayByPhone_GetZoneStatus_LocalTest">
+      <soap12:operation soapAction="http://www.autocite.com/autoissue_dotnet/autoissuepublicservice/PayByPhone_GetZoneStatus_LocalTest" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="PayByPhone_GetZoneStatus">
+      <soap12:operation soapAction="http://www.autocite.com/autoissue_dotnet/autoissuepublicservice/PayByPhone_GetZoneStatus" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="PayByPhone_GetVehicleStatus">
+      <soap12:operation soapAction="http://www.autocite.com/autoissue_dotnet/autoissuepublicservice/PayByPhone_GetVehicleStatus" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CloseOutCurrentUserFromDatabase">
+      <soap12:operation soapAction="http://www.autocite.com/autoissue_dotnet/autoissuepublicservice/CloseOutCurrentUserFromDatabase" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SyncSession_Authenticate">
+      <soap12:operation soapAction="http://www.autocite.com/autoissue_dotnet/autoissuepublicservice/SyncSession_Authenticate" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SyncSession_ClaimSerialNo">
+      <soap12:operation soapAction="http://www.autocite.com/autoissue_dotnet/autoissuepublicservice/SyncSession_ClaimSerialNo" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SyncSession_ReleaseSerialNo">
+      <soap12:operation soapAction="http://www.autocite.com/autoissue_dotnet/autoissuepublicservice/SyncSession_ReleaseSerialNo" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SyncSession_Begin">
+      <soap12:operation soapAction="http://www.autocite.com/autoissue_dotnet/autoissuepublicservice/SyncSession_Begin" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CreateFileInCommSession">
+      <soap12:operation soapAction="http://www.autocite.com/autoissue_dotnet/autoissuepublicservice/CreateFileInCommSession" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ImportCommSessionData">
+      <soap12:operation soapAction="http://www.autocite.com/autoissue_dotnet/autoissuepublicservice/ImportCommSessionData" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetHHConfigFile">
+      <soap12:operation soapAction="http://www.autocite.com/autoissue_dotnet/autoissuepublicservice/GetHHConfigFile" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetHHPlatformFile">
+      <soap12:operation soapAction="http://www.autocite.com/autoissue_dotnet/autoissuepublicservice/GetHHPlatformFile" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RefreshCompositeFiles">
+      <soap12:operation soapAction="http://www.autocite.com/autoissue_dotnet/autoissuepublicservice/RefreshCompositeFiles" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RefreshCompositeFiles2">
+      <soap12:operation soapAction="http://www.autocite.com/autoissue_dotnet/autoissuepublicservice/RefreshCompositeFiles2" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DownloadACompositeFileChunk">
+      <soap12:operation soapAction="http://www.autocite.com/autoissue_dotnet/autoissuepublicservice/DownloadACompositeFileChunk" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GenerateHandheldUserStructFile">
+      <soap12:operation soapAction="http://www.autocite.com/autoissue_dotnet/autoissuepublicservice/GenerateHandheldUserStructFile" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GenerateHandheldUserStructFile_Ex">
+      <soap12:operation soapAction="http://www.autocite.com/autoissue_dotnet/autoissuepublicservice/GenerateHandheldUserStructFile_Ex" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetNewUnitBooks">
+      <soap12:operation soapAction="http://www.autocite.com/autoissue_dotnet/autoissuepublicservice/GetNewUnitBooks" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="InsertCommLogIntoTable">
+      <soap12:operation soapAction="http://www.autocite.com/autoissue_dotnet/autoissuepublicservice/InsertCommLogIntoTable" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UploadAutoVuData">
+      <soap12:operation soapAction="http://www.autocite.com/autoissue_dotnet/autoissuepublicservice/UploadAutoVuData" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AcknowledgeProcessedDuncanAutoVuHit">
+      <soap12:operation soapAction="http://www.autocite.com/autoissue_dotnet/autoissuepublicservice/AcknowledgeProcessedDuncanAutoVuHit" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DownloadDuncanAutoVuHits">
+      <soap12:operation soapAction="http://www.autocite.com/autoissue_dotnet/autoissuepublicservice/DownloadDuncanAutoVuHits" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DownloadDuncanAutoVuHitsCompressed">
+      <soap12:operation soapAction="http://www.autocite.com/autoissue_dotnet/autoissuepublicservice/DownloadDuncanAutoVuHitsCompressed" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DownloadDuncanAutoVuHit">
+      <soap12:operation soapAction="http://www.autocite.com/autoissue_dotnet/autoissuepublicservice/DownloadDuncanAutoVuHit" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DownloadNextDuncanAutoVuHit">
+      <soap12:operation soapAction="http://www.autocite.com/autoissue_dotnet/autoissuepublicservice/DownloadNextDuncanAutoVuHit" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DownloadNextDuncanAutoVuHit_SAMPLE">
+      <soap12:operation soapAction="http://www.autocite.com/autoissue_dotnet/autoissuepublicservice/DownloadNextDuncanAutoVuHit_SAMPLE" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetOfficerList">
+      <soap12:operation soapAction="http://www.autocite.com/autoissue_dotnet/autoissuepublicservice/GetOfficerList" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetOfficerActivity">
+      <soap12:operation soapAction="http://www.autocite.com/autoissue_dotnet/autoissuepublicservice/GetOfficerActivity" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetOfficerLocations">
+      <soap12:operation soapAction="http://www.autocite.com/autoissue_dotnet/autoissuepublicservice/GetOfficerLocations" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="AutoISSUEPublicService">
+    <wsdl:port name="AutoISSUEPublicServiceSoap" binding="tns:AutoISSUEPublicServiceSoap">
+      <soap:address location="http://sales.duncan-usa.com/ReinoWebServices/US%20Parking%20DemoAutoISSUEpublic/AutoISSUEpublicService.asmx" />
+    </wsdl:port>
+    <wsdl:port name="AutoISSUEPublicServiceSoap12" binding="tns:AutoISSUEPublicServiceSoap12">
+      <soap12:address location="http://sales.duncan-usa.com/ReinoWebServices/US%20Parking%20DemoAutoISSUEpublic/AutoISSUEpublicService.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

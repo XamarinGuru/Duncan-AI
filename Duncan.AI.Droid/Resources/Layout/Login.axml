@@ -1,0 +1,193 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="@drawable/login_background">
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true">
+        <ImageView
+            android:src="@drawable/ic_app_title_logo_new"
+            android:layout_width="wrap_content"
+            android:layout_height="64dp"
+            android:id="@+id/imageView1"
+            android:layout_centerHorizontal="true"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="25dp" />
+        <TextView
+            android:text="@string/City"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/textViewCity"
+            android:textColor="@color/civicsmart_black"
+            android:layout_centerHorizontal="true"
+            android:gravity="center"
+            android:layout_below="@id/imageView1"
+            android:layout_marginTop="0dp"
+            android:layout_gravity="center" />
+        <LinearLayout
+            android:id="@+id/loginLinearLayout"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+            <TextView
+                android:text="Login"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/textLoginPrompt"
+                android:textColor="@color/civicsmart_black"
+                android:gravity="left"
+                android:layout_marginLeft="12dp"
+                android:layout_marginTop="20dp"
+                android:layout_gravity="center" />
+            <TextView
+                android:id="@+id/usernameLabel"
+                android:text="User Name:"
+                android:layout_marginTop="10dp"
+                android:textAppearance="?android:attr/textAppearanceSmall"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="left"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:textColor="@color/civicsmart_black" />
+            <EditText
+                android:id="@+id/username"
+                android:background="@drawable/EditTextLoginFocusLost"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/UserName"
+                android:inputType="text"
+                android:layout_below="@+id/usernameLabel"
+                android:textColor="@color/civicsmart_black"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp" />
+            <TextView
+                android:id="@+id/passwordLabel"
+                android:text="Password:"
+                android:layout_marginTop="10dp"
+                android:layout_below="@+id/username"
+                android:textAppearance="?android:attr/textAppearanceSmall"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="left"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:textColor="@color/civicsmart_black" />
+            <EditText
+                android:id="@+id/password"
+                android:background="@drawable/EditTextLoginFocusLost"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/passwordLabel"
+                android:hint="@string/Passowrd"
+                android:inputType="textPassword"
+                android:textColor="@color/civicsmart_black"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp" />
+        </LinearLayout>
+        <LinearLayout
+            android:id="@+id/loginLinearLayout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="20dp"
+            android:gravity="center"
+            android:orientation="horizontal">
+            <Button
+                android:text="SYNC"
+                android:id="@+id/refDBButton"
+                android:layout_height="fill_parent"
+                android:layout_width="wrap_content"
+                android:background="@drawable/button_menu_login_action"
+                android:textColor="@android:color/black" />
+            <Button
+                android:text="LOGIN"
+                android:id="@+id/loginButton"
+                android:layout_height="fill_parent"
+                android:layout_width="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:background="@drawable/button_menu_login_action"
+                android:textColor="@android:color/black" />
+        </LinearLayout>
+        <LinearLayout
+            android:id="@+id/configLinearLayout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="right"
+            android:orientation="horizontal">
+            <Button
+                android:id="@+id/btnConfig"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="35dp"
+                android:gravity="right"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:background="@drawable/ic_settings_applications_black_48dp"
+                android:textColor="@android:color/white"
+                android:layout_gravity="right" />
+        </LinearLayout>
+        <ProgressBar
+            android:id="@+id/progressbar1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            style="@android:style/Widget.ProgressBar.Small"
+            android:layout_marginRight="5dp" />
+        <TextView
+            android:text="@string/Loading"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:textColor="@color/civicsmart_black"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/loading"
+            android:layout_centerHorizontal="true"
+            android:gravity="center"
+            android:layout_below="@id/refDBButton"
+            android:layout_marginTop="20dp"
+            android:visibility="gone" />
+        <TextView
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="@color/civicsmart_black"
+            android:id="@+id/loadingdetails"
+            android:layout_centerHorizontal="true"
+            android:gravity="center"
+            android:layout_below="@id/loading"
+            android:layout_marginTop="5dp"
+            android:visibility="gone" />
+        <RelativeLayout
+            android:id="@+id/InnerRelativeLayout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:layout_alignParentBottom="true">
+            <TextView
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/textViewSerialNumber"
+                android:textColor="@color/civicsmart_black"
+                android:layout_centerHorizontal="true"
+                android:gravity="center"
+                android:layout_gravity="center_horizontal" />
+            <TextView
+                android:text="@string/Version"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/textViewVersionNumber"
+                android:layout_centerHorizontal="true"
+                android:textColor="@color/civicsmart_black"
+                android:layout_below="@id/textViewSerialNumber"
+                android:gravity="center"
+                android:layout_marginTop="5dp"
+                android:layout_gravity="center_vertical" />
+        </RelativeLayout>
+    </LinearLayout>
+</LinearLayout>

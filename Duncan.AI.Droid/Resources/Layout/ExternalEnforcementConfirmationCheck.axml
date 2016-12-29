@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="@color/civicsmart_white">
+    <TextView
+        android:text="Checking Payment Status..."
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/enfCheckDialogTitle"
+        android:layout_marginTop="5dp"
+        android:layout_marginBottom="5dp"
+        android:visibility="visible"
+        android:gravity="center"
+        android:textAppearance="?android:attr/textAppearanceLarge" />
+    <TextView
+        android:text=""
+        android:layout_height="wrap_content"
+        android:id="@+id/enfCheckStatusText"
+        android:visibility="visible"
+        android:gravity="fill_horizontal"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:layout_gravity="center"
+        android:textColor="@color/civicsmart_black"
+        android:background="@drawable/edittextfocuslost"
+        android:layout_width="match_parent" />
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/linearLayout1">
+        <Button
+            android:text="CANCEL"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:id="@id/btnDiscard"
+            android:layout_marginRight="72.0dp"
+            android:visibility="gone" />
+        <Button
+            android:text="CONFIRM"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:id="@+id/btnConfirmAddress"
+            android:layout_marginRight="104.0dp"
+            android:visibility="gone" />
+    </LinearLayout>
+</LinearLayout>

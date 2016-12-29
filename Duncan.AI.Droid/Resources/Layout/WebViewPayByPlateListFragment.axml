@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:minWidth="25px"
+    android:minHeight="25px"
+    android:layout_margin="20dp">
+    <LinearLayout
+        android:id="@+id/ErrorDisplayPayByPlateList"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_marginTop="50dp"
+        android:visibility="visible">
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+            <TextView
+                android:id="@+id/ErrorMessageHeader"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Loading..."
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:layout_marginLeft="10dp" />
+            <TextView
+                android:id="@+id/ErrorMessageDetail"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:text=""
+                android:textAppearance="?android:attr/textAppearanceMedium" />
+            <TextView
+                android:id="@+id/ErrorMessageFinePrint"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:text=""
+                android:textAppearance="?android:attr/textAppearanceSmall" />
+        </LinearLayout>
+        <Button
+            android:id="@+id/ButtonReloadPayByPlate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:layout_marginTop="30dp"
+            android:text="RELOAD"
+            android:visibility="visible"
+            android:background="@drawable/button_back"
+            android:textColor="@android:color/black"
+            android:layout_gravity="center_horizontal" />
+        <Button
+            android:id="@+id/ButtonExitToAppPayByPlate"
+            android:layout_width="96dp"
+            android:layout_height="96dp"
+            android:layout_marginTop="15dp"
+            android:gravity="center"
+            android:visibility="visible"
+            android:background="@drawable/ic_exit_to_app_black_48dp"
+            android:textColor="@android:color/white"
+            android:layout_gravity="center_horizontal" />
+    </LinearLayout>
+    <WebView
+        android:id="@+id/WebViewPayByPlateList"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent" />
+    <ProgressBar
+        android:id="@+id/WebViewPayByPlateListProgressBar"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:gravity="center"
+        android:visibility="visible"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal" />
+</LinearLayout>

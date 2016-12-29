@@ -1,0 +1,190 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:id="@+id/ticketdetailscrollviewMain2">
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="20dp"
+        android:id="@+id/LinearLayoutMain2"
+        android:orientation="vertical">
+        <LinearLayout
+            android:id="@+id/RecordInfoContainer2"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/login_background"
+            android:orientation="vertical"
+            android:layout_marginBottom="5dp">
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+                <TextView
+                    android:text="Review and Confirm"
+                    android:textAppearance="?android:attr/textAppearanceLarge"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/recordinfoprimary2"
+                    android:layout_gravity="center"
+                    android:textColor="@android:color/white" />
+                <TextView
+                    android:text="77601229 01/08/2016 at 10:25 AM"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:id="@+id/recordinfosecondary2"
+                    android:layout_gravity="center"
+                    android:textColor="@android:color/white" />
+            </LinearLayout>
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginStart="0dp"
+            android:layout_marginTop="5dp">
+            <LinearLayout
+                android:layout_width="60dp"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+                <Button
+                    android:id="@+id/NotesButton22"
+                    android:layout_width="48dp"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center"
+                    android:background="@drawable/ic_notes_pen_orange_48"
+                    android:textColor="@android:color/white"
+                    android:layout_marginRight="0.0dp" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:clickable="false"
+                    android:layout_marginBottom="10dp"
+                    android:text="Notes"
+                    android:textColor="@android:color/holo_orange_dark"
+                    android:textSize="@dimen/activity_horizontal_margin" />
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="60dp"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_marginLeft="10dp">
+                <Button
+                    android:id="@+id/PrintButton22"
+                    android:layout_width="48dp"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center"
+                    android:text=""
+                    android:background="@drawable/ic_printer_blue_48"
+                    android:textColor="@android:color/white"
+                    android:layout_marginRight="0.0dp" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:clickable="false"
+                    android:layout_marginBottom="10dp"
+                    android:text="Print"
+                    android:textColor="@android:color/holo_blue_dark"
+                    android:textSize="@dimen/activity_horizontal_margin" />
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="60dp"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_marginLeft="10dp">
+                <Button
+                    android:id="@+id/button122"
+                    android:layout_width="48dp"
+                    android:layout_height="match_parent"
+                    android:text=""
+                    android:layout_gravity="center"
+                    android:background="@drawable/ic_void_red_48"
+                    android:textColor="@android:color/white"
+                    android:layout_marginRight="0.0dp" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:clickable="false"
+                    android:layout_marginBottom="10dp"
+                    android:textColor="@android:color/holo_red_dark"
+                    android:text="Void"
+                    android:textSize="@dimen/activity_horizontal_margin" />
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="60dp"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_marginLeft="10dp">
+                <Button
+                    android:id="@+id/IssueAnotherButton22"
+                    android:layout_width="48dp"
+                    android:layout_height="match_parent"
+                    android:text=""
+                    android:layout_gravity="center"
+                    android:background="@drawable/ic_void_red_48"
+                    android:textColor="@android:color/white"
+                    android:layout_marginRight="0.0dp" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:clickable="false"
+                    android:layout_marginBottom="10dp"
+                    android:textColor="@android:color/holo_red_dark"
+                    android:text="IssMore"
+                    android:textSize="@dimen/activity_horizontal_margin" />
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="60dp"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_marginLeft="10dp">
+                <Button
+                    android:id="@+id/BackButton22"
+                    android:layout_width="40dp"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center"
+                    android:background="@drawable/ic_checkmark_green_48"
+                    android:textColor="@android:color/white"
+                    android:layout_marginRight="0.0dp" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:clickable="false"
+                    android:layout_marginBottom="10dp"
+                    android:text="Done"
+                    android:textColor="@android:color/holo_green_dark"
+                    android:textSize="@dimen/activity_horizontal_margin" />
+            </LinearLayout>
+        </LinearLayout>
+        <LinearLayout
+            android:orientation="vertical"
+            android:minWidth="25px"
+            android:minHeight="25px"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/linearLayout12">
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:id="@+id/imageReproduction2"
+                android:scaleType="fitCenter"
+                android:adjustViewBounds="true"
+                android:layout_marginBottom="5dp"
+                android:background="@drawable/parking_ticket_placeholder" />
+        </LinearLayout>
+        <ListView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:id="@+id/noteslist2"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp" />
+    </LinearLayout>
+</ScrollView>

@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<discovery xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://schemas.xmlsoap.org/disco/">
+  <contractRef ref="http://sales.duncan-usa.com/ReinoWebServices/ChicagoAutoISSUEHost/AutoISSUEHostService.asmx?wsdl" docRef="http://sales.duncan-usa.com/ReinoWebServices/ChicagoAutoISSUEHost/AutoISSUEHostService.asmx" xmlns="http://schemas.xmlsoap.org/disco/scl/" />
+  <soap address="http://sales.duncan-usa.com/ReinoWebServices/ChicagoAutoISSUEHost/AutoISSUEHostService.asmx" xmlns:q1="http://www.autocite.com/autoissue_dotnet/autoissuehostservice" binding="q1:AutoISSUEHostServiceSoap" xmlns="http://schemas.xmlsoap.org/disco/soap/" />
+  <soap address="http://sales.duncan-usa.com/ReinoWebServices/ChicagoAutoISSUEHost/AutoISSUEHostService.asmx" xmlns:q2="http://www.autocite.com/autoissue_dotnet/autoissuehostservice" binding="q2:AutoISSUEHostServiceSoap12" xmlns="http://schemas.xmlsoap.org/disco/soap/" />
+</discovery>
